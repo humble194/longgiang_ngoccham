@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tạo link mời khách</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<style>
+:root {
+  --paper: #FBFAF8;
+  --ink: #23252A;
+  --muted: #74757B;
+  --line: #E3E0DA;
+  --bronze: #8C6D4A;
+  --tint: #F1ECE5;
+  --display: "Cormorant Garamond", "Times New Roman", serif;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 300 15px/1.6 var(--body);
+  padding: 32px 16px 80px;
+}
+.wrap { max-width: 560px; margin: 0 auto; }
+h1 { font: 400 1.8rem/1.3 var(--display); margin: 0 0 4px; }
+.sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 32px; }
+label { display: block; font: 500 0.72rem/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze); margin-bottom: 8px; }
+textarea, input {
+  width: 100%; font: 400 1rem/1.4 var(--body); color: var(--ink);
+  background: #fff; border: 1px solid var(--line); padding: 12px 14px;
+}
+textarea { min-height: 140px; resize: vertical; }
+input { margin-bottom: 24px; }
+.field { margin-bottom: 20px; }
+button {
+  font: 500 0.82rem/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper); border: 0; padding: 14px 22px; cursor: pointer;
+}
+button.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.results { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 24px; }
+.row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.row .name { flex: 1 1 auto; font-weight: 500; }
+.row .url { flex: 2 1 auto; font-size: 0.8rem; color: var(--muted); word-break: break-all; }
+.row button { padding: 8px 14px; font-size: 0.7rem; flex: 0 0 auto; }
+.row button.copied { background: var(--bronze); }
+.empty { color: var(--muted); font-size: 0.85rem; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Tạo link mời khách</h1>
+  <p class="sub">Nhập tên khách (mỗi dòng một người), bấm "Tạo link" để ra danh sách link cá nhân hoá — gửi mỗi link cho đúng người đó qua Zalo/Messenger.</p>
+
+  <div class="field">
+    <label for="base">Link gốc của thiệp</label>
+    <input id="base" type="text" value="">
+  </div>
+
+  <div class="field">
+    <label for="names">Danh sách khách (mỗi dòng một tên)</label>
+    <textarea id="names" placeholder="Anh Minh&#10;Chị Lan&#10;Gia đình cô Hoa&#10;Bạn Trang"></textarea>
+  </div>
+
+  <div class="actions">
+    <button id="gen">Tạo link</button>
+    <button id="copyAll" class="ghost" hidden>Copy tất cả</button>
+  </div>
+
+  <div class="results" id="results" hidden></div>
+  <p class="empty" id="empty">Chưa có link nào — nhập tên và bấm "Tạo link".</p>
+</div>
+
+<script>
+(function () {
+  var baseInput = document.getElementById("base");
+  var namesInput = document.getElementById("names");
+  var genBtn = document.getElementById("gen");
+  var copyAllBtn = document.getElementById("copyAll");
+  var results = document.getElementById("results");
+  var empty = document.getElementById("empty");
+
+  // Mặc định: cùng thư mục với file này, trỏ sang index.html
+  baseInput.value = location.href.replace(/[^/]*$/, "index.html");
+
+  var list = [];
+
+  function render() {
+    results.innerHTML = "";
+    if (!list.length) {
+      results.hidden = true;
+      copyAllBtn.hidden = true;
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
+    results.hidden = false;
+    copyAllBtn.hidden = false;
+    list.forEach(function (item, i) {
+      var row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML =
+        '<span class="name">' + item.name.replace(/</g, "&lt;") + '</span>' +
+        '<span class="url">' + item.url + '</span>' +
+        '<button type="button" data-i="' + i + '">Copy</button>';
+      results.appendChild(row);
+    });
+  }
+
+  function buildUrl(name) {
+    var base = baseInput.value.trim() || "index.html";
+    var sep = base.indexOf("?") === -1 ? "?" : "&";
+    return base + sep + "to=" + encodeURIComponent(name);
+  }
+
+  genBtn.addEventListener("click", function () {
+    var lines = namesInput.value.split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
+    list = lines.map(function (name) { return { name: name, url: buildUrl(name) }; });
+    render();
+  });
+
+  results.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-i]");
+    if (!btn) return;
+    var item = list[+btn.dataset.i];
+    var done = function () {
+      btn.textContent = "Đã copy";
+      btn.classList.add("copied");
+      setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 1500);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(item.url).then(done, function () {});
+  });
+
+  copyAllBtn.addEventListener("click", function () {
+    var text = list.map(function (item) { return item.name + ": " + item.url; }).join("\n");
+    var done = function () {
+      copyAllBtn.textContent = "Đã copy tất cả";
+      setTimeout(function () { copyAllBtn.textContent = "Copy tất cả"; }, 1500);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+  });
+})();
+</script>
+</body>
+</html>
