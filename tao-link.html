@@ -90,8 +90,8 @@ button.ghost { background: transparent; color: var(--ink); border: 1px solid var
   var results = document.getElementById("results");
   var empty = document.getElementById("empty");
 
-  // Mặc định: cùng thư mục với file này, trỏ sang index.html
-  baseInput.value = location.href.replace(/[^/]*$/, "index.html");
+  // Mặc định: cùng thư mục với file này, không kèm index.html
+  baseInput.value = location.href.replace(/[^/]*$/, "");
 
   var list = [];
 
@@ -118,7 +118,7 @@ button.ghost { background: transparent; color: var(--ink); border: 1px solid var
   }
 
   function buildUrl(name) {
-    var base = baseInput.value.trim() || "index.html";
+    var base = baseInput.value.trim() || "./";
     var sep = base.indexOf("?") === -1 ? "?" : "&";
     return base + sep + "to=" + encodeURIComponent(name);
   }
