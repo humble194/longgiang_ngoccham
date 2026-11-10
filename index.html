@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Long Giang & Ngọc Châm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Long Giang & Ngọc Châm — Chủ Nhật, 20.12.2026">
+<!-- Ảnh xem trước khi gửi link qua Zalo/Facebook: thay og-image.jpg bằng ảnh thật (1200x630) -->
+<meta property="og:title" content="Thiệp cưới Long Giang & Ngọc Châm">
+<meta property="og:description" content="Chủ Nhật, 20.12.2026 · Trân trọng kính mời">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<style>
+/* Layout: một cột hẹp như tấm thiệp giấy, các phần tách bằng khoảng trắng và đường kẻ mảnh; chỉ một tông màu đồng làm điểm nhấn.
+   Chủ ý giữ một giao diện sáng (thiệp in giấy), không đổi theo chế độ tối. */
+:root {
+  --paper: #FBFAF8;
+  --ink: #23252A;
+  --muted: #74757B;
+  --line: #E3E0DA;
+  --bronze: #8C6D4A;
+  --tint: #F1ECE5;
+  --display: "Cormorant Garamond", "Times New Roman", serif;
+  --script: "Great Vibes", "Cormorant Garamond", cursive;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 300 15px/1.7 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.card { max-width: 540px; margin: 0 auto; }
+section { padding-block: 64px; border-top: 1px solid var(--line); }
+section:first-child { border-top: 0; }
+h2 {
+  font: 400 2rem/1.2 var(--display);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+.label {
+  font: 500 0.7rem/1 var(--body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin: 0 0 16px;
+}
+.muted { color: var(--muted); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
+
+/* Bìa */
+.cover { text-align: center; padding-block: 72px 56px; }
+.names {
+  font: 400 clamp(3.2rem, 14vw, 4.8rem)/1.25 var(--script);
+  margin: 24px 0;
+  text-wrap: balance;
+}
+.names em { display: block; font: italic 400 0.5em/1 var(--display); color: var(--bronze); margin: 4px 0; }
+.date-big {
+  font: 400 1.15rem/1 var(--body);
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+.lunar { font-size: 0.85rem; margin-top: 10px; }
+.invite { margin-top: 40px; }
+.guest {
+  font: italic 400 1.9rem/1.2 var(--display);
+  margin-top: 6px;
+  word-break: break-word;
+}
+.countdown {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  margin: 40px auto 0; max-width: 360px;
+}
+.countdown div { border-top: 1px solid var(--ink); padding-top: 10px; }
+.countdown b {
+  display: block; font: 400 2rem/1 var(--display);
+  font-variant-numeric: tabular-nums;
+}
+.countdown span { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+/* Hai gia đình */
+.families { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: center; }
+.families h3 { font: 500 0.75rem/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 12px; color: var(--bronze); }
+.families p { font-size: 0.9rem; }
+.announce { text-align: center; margin-top: 32px; font: italic 400 1.2rem/1.5 var(--display); text-wrap: balance; }
+
+/* Liên kết */
+.links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
+.links a {
+  font-size: 0.8rem; font-weight: 500; text-decoration: none;
+  color: var(--bronze); border-bottom: 1px solid currentColor; padding-bottom: 1px;
+}
+
+/* Album */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+.ph {
+  aspect-ratio: 3 / 4; max-width: 100%;
+  background: var(--tint);
+  display: grid; place-items: center;
+  font: italic 400 1rem/1 var(--display); color: var(--muted);
+  position: relative;
+}
+.ph::after { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(140,109,74,.25); }
+.ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+
+/* Nút */
+button {
+  font: 500 0.82rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper); border: 0; padding: 16px 20px; cursor: pointer;
+}
+
+/* Địa chỉ */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.tabs button { padding: 10px 14px; font-size: 0.72rem; letter-spacing: 0.1em; }
+.tabs button[aria-selected="false"] { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.place { margin-top: 20px; }
+.place h3 { font: 500 1rem/1.4 var(--body); margin: 0 0 4px; }
+.place .addr { font-size: 1rem; color: var(--ink); }
+.map {
+  margin-top: 16px; width: 100%; max-width: 100%; aspect-ratio: 4 / 3;
+  border: 1px solid var(--line); background: var(--tint); display: block;
+}
+.place .links { margin-top: 14px; }
+
+footer { text-align: center; padding-block: 64px 80px; border-top: 1px solid var(--line); }
+footer .names { font-size: 2.8rem; margin: 12px 0; }
+
+@media (max-width: 380px) {
+  .families { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cover > * { animation: rise .9s ease-out both; }
+  .cover > *:nth-child(2) { animation-delay: .1s; }
+  .cover > *:nth-child(3) { animation-delay: .2s; }
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+</style>
+</head>
+<body>
+<main class="card">
+
+  <section class="cover">
+    <p class="label">Thư mời cưới</p>
+    <h1 class="names">Long Giang <em>&amp;</em> Ngọc Châm</h1>
+    <div>
+      <p class="date-big">20 · 12 · 2026</p>
+      <p class="lunar muted">Chủ Nhật — nhằm ngày 12 tháng 11 năm Bính Ngọ</p>
+    </div>
+    <div class="invite">
+      <p class="muted">Trân trọng kính mời</p>
+      <p class="guest" id="guest">Quý khách</p>
+    </div>
+    <div class="countdown" aria-label="Thời gian còn lại đến tiệc cưới">
+      <div><b id="cd-d">--</b><span>ngày</span></div>
+      <div><b id="cd-h">--</b><span>giờ</span></div>
+      <div><b id="cd-m">--</b><span>phút</span></div>
+      <div><b id="cd-s">--</b><span>giây</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="families">
+      <div>
+        <h3>Nhà trai</h3>
+        <p>Ông Nguyễn Văn C<br>Bà Lê Thị D</p>
+        <p class="muted">Cầu Giấy, Hà Nội</p>
+      </div>
+      <div>
+        <h3>Nhà gái</h3>
+        <p>Ông Trần Văn E<br>Bà Phạm Thị F</p>
+        <p class="muted">TP. Nam Định</p>
+      </div>
+    </div>
+    <p class="announce">Trân trọng báo tin lễ thành hôn của con chúng tôi<br>Nguyễn Long Giang &amp; Trần Ngọc Châm</p>
+  </section>
+
+  <section id="map">
+    <p class="label">Địa chỉ</p>
+    <h2>Đường đến ngày vui</h2>
+    <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
+      <button type="button" role="tab" id="tab-tiec" aria-selected="true" data-place="0">Tiệc cưới</button>
+      <button type="button" role="tab" id="tab-trai" aria-selected="false" data-place="1">Nhà trai</button>
+      <button type="button" role="tab" id="tab-gai" aria-selected="false" data-place="2">Nhà gái</button>
+    </div>
+    <div class="place" role="tabpanel" aria-live="polite">
+      <h3 id="place-name">Trung tâm Tiệc cưới Hoa Sen, sảnh Ngọc Lan</h3>
+      <p class="addr" id="place-addr">36 Duy Tân, Cầu Giấy, Hà Nội</p>
+      <iframe class="map" id="place-map" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=36%20Duy%20T%C3%A2n%2C%20C%E1%BA%A7u%20Gi%E1%BA%A5y%2C%20H%C3%A0%20N%E1%BB%99i&z=16&output=embed"></iframe>
+      <div class="links">
+        <a id="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=36%20Duy%20T%C3%A2n%2C%20C%E1%BA%A7u%20Gi%E1%BA%A5y%2C%20H%C3%A0%20N%E1%BB%99i">Mở Google Maps</a>
+        <a href="#" id="place-copy">Sao chép địa chỉ</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Album</p>
+    <h2>Khoảnh khắc</h2>
+    <div class="gallery">
+      <div class="ph wide">Ảnh cưới 1</div>
+      <div class="ph">Ảnh 2</div>
+      <div class="ph">Ảnh 3</div>
+      <div class="ph">Ảnh 4</div>
+      <div class="ph">Ảnh 5</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="label">Cảm ơn bạn</p>
+    <p class="names">Long Giang &amp; Ngọc Châm</p>
+    <p class="muted">Rất mong được đón tiếp bạn.</p>
+  </footer>
+</main>
+
+<script>
+// ===== CẤU HÌNH =====
+var WEDDING_TIME = new Date("2026-12-20T18:30:00+07:00"); // giờ khai tiệc
+
+// Tên khách từ link: index.html?to=Anh%20Minh
+(function () {
+  var name = "";
+  try { name = new URLSearchParams(location.search).get("to") || ""; } catch (e) {}
+  name = name.trim().slice(0, 60);
+  if (name) document.getElementById("guest").textContent = name;
+})();
+
+// Đếm ngược
+(function () {
+  var ids = ["cd-d", "cd-h", "cd-m", "cd-s"].map(function (i) { return document.getElementById(i); });
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
+    var diff = Math.max(0, WEDDING_TIME - Date.now());
+    var s = Math.floor(diff / 1000);
+    var vals = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    ids.forEach(function (el, i) { el.textContent = i === 0 ? vals[i] : pad(vals[i]); });
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// Địa chỉ: sửa tên và địa chỉ thật ở đây
+var PLACES = [
+  { name: "Trung tâm Tiệc cưới Hoa Sen, sảnh Ngọc Lan", addr: "36 Duy Tân, Cầu Giấy, Hà Nội" },
+  { name: "Tư gia nhà trai", addr: "108 Trần Thái Tông, Cầu Giấy, Hà Nội" },
+  { name: "Tư gia nhà gái", addr: "25 Hàng Tiện, TP. Nam Định" }
+];
+(function () {
+  var tabs = document.querySelectorAll("[data-place]");
+  var copyLink = document.getElementById("place-copy");
+  var current = PLACES[0];
+  function show(i) {
+    current = PLACES[i];
+    var q = encodeURIComponent(current.addr);
+    document.getElementById("place-name").textContent = current.name;
+    document.getElementById("place-addr").textContent = current.addr;
+    document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
+    document.getElementById("place-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.place == i)); });
+    copyLink.textContent = "Sao chép địa chỉ";
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(+t.dataset.place); }); });
+  copyLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    var done = function () { copyLink.textContent = "Đã sao chép"; };
+    if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
+  });
+})();
+</script>
+</body>
+</html>
