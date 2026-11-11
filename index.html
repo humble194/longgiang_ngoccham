@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Đỗ Ngọc Châm & Vi Long Giang</title>
+<title>Ngọc Châm & Long Giang</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Đỗ Ngọc Châm & Vi Long Giang — Thứ Tư, 21.10.2026">
 <!-- Ảnh xem trước khi gửi link qua Zalo/Facebook: thay og-image.jpg bằng ảnh thật (1200x630) -->
@@ -11,6 +11,7 @@
 <meta property="og:description" content="Thứ Tư, 21.10.2026 · Trân trọng kính mời">
 <meta property="og:image" content="og-image.jpg">
 <meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;💍&lt;/text&gt;&lt;/svg&gt;">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
@@ -40,7 +41,7 @@ body {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 .card { max-width: 540px; margin: 0 auto; }
-section { padding-block: 64px; border-top: 1px solid var(--line); }
+section { padding-block: 48px; border-top: 1px solid var(--line); }
 section:first-child { border-top: 0; }
 h2 {
   font: 400 2rem/1.2 var(--display);
@@ -59,27 +60,31 @@ p { margin: 0; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
 
-/* Bìa */
-.cover { text-align: center; padding-block: 72px 56px; }
+/* Bìa + lời mời — gộp thành một khối thông tin duy nhất (Trang 1) */
+.cover { text-align: center; padding-block: 56px 48px; }
 .names {
-  font: 400 clamp(3.2rem, 14vw, 4.8rem)/1.25 var(--script);
-  margin: 24px 0;
+  font: 400 clamp(2.8rem, 13vw, 4.2rem)/1.2 var(--script);
+  margin: 18px 0;
   text-wrap: balance;
 }
 .names em { display: block; font: italic 400 0.5em/1 var(--display); color: var(--bronze); margin: 4px 0; }
 .date-big {
-  font: 400 1.15rem/1 var(--body);
+  font: 400 1.1rem/1 var(--body);
   letter-spacing: 0.14em;
   font-variant-numeric: tabular-nums;
 }
-.lunar { font-size: 0.85rem; margin-top: 10px; }
-.invite { margin-top: 40px; }
+.lunar { font-size: 0.82rem; margin-top: 8px; }
+.invite { margin-top: 28px; }
 .guest {
-  font: italic 400 1.9rem/1.2 var(--display);
-  margin-top: 6px;
+  font: italic 400 1.7rem/1.2 var(--display);
+  margin-top: 4px;
   word-break: break-word;
 }
-.announce { text-align: center; margin-top: 32px; font: italic 400 1.2rem/1.5 var(--display); text-wrap: balance; }
+.venue { font: italic 400 1.6rem/1.2 var(--display); color: var(--bronze); margin-top: 18px; }
+.when { margin-top: 20px; }
+.when p { font-weight: 500; letter-spacing: 0.04em; }
+.when .time { letter-spacing: 0.08em; }
+.announce { text-align: center; margin-top: 24px; font: italic 400 1.1rem/1.5 var(--display); text-wrap: balance; }
 
 /* Liên kết */
 .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
@@ -88,7 +93,7 @@ a { color: inherit; }
   color: var(--bronze); border-bottom: 1px solid currentColor; padding-bottom: 1px;
 }
 
-/* Album */
+/* Album — "mở khung ảnh": khung viền vẽ ra trước, ảnh hiện sau */
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
 .ph {
   aspect-ratio: 3 / 4; max-width: 100%;
@@ -96,9 +101,30 @@ a { color: inherit; }
   display: grid; place-items: center;
   font: italic 400 1rem/1 var(--display); color: var(--muted);
   position: relative;
+  overflow: hidden;
 }
-.ph::after { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(140,109,74,.25); }
+.ph .frame {
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(140,109,74,.25);
+  clip-path: inset(50% 50% 50% 50%);
+}
+.ph .cap { opacity: 0; transform: scale(1.06); }
 .ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.is-visible .gallery .ph .frame { animation: frameDraw .6s ease-out both; }
+  .reveal.is-visible .gallery .ph .cap { animation: frameCap .7s ease-out .35s both; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .frame { animation-delay: .1s; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .cap { animation-delay: .45s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .frame { animation-delay: .18s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .cap { animation-delay: .53s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .frame { animation-delay: .26s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .cap { animation-delay: .61s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .frame { animation-delay: .34s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .cap { animation-delay: .69s; }
+  @keyframes frameDraw { to { clip-path: inset(0 0 0 0); } }
+  @keyframes frameCap { to { opacity: 1; transform: none; } }
+}
 
 /* Nút */
 button {
@@ -119,14 +145,23 @@ button {
 }
 .place .links { margin-top: 14px; }
 
-footer { text-align: center; padding-block: 64px 80px; border-top: 1px solid var(--line); }
-footer .names { font-size: 2.8rem; margin: 12px 0; }
+footer { text-align: center; padding-block: 48px 56px; border-top: 1px solid var(--line); }
+footer .names { font-size: 2.4rem; margin: 10px 0; }
+
+/* Hiện dần khi cuộn tới — áp dụng cho các khối sau phần bìa */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: no-preference) {
   .cover > * { animation: rise .9s ease-out both; }
   .cover > *:nth-child(2) { animation-delay: .1s; }
   .cover > *:nth-child(3) { animation-delay: .2s; }
   @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .gallery .ph .frame { clip-path: none; }
+  .gallery .ph .cap { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -136,29 +171,26 @@ footer .names { font-size: 2.8rem; margin: 12px 0; }
   <section class="cover">
     <p class="label">Thư mời cưới</p>
     <h1 class="names">Ngọc Châm <em>&amp;</em> Long Giang</h1>
-    <div>
-      <p class="date-big">21 · 10 · 2026</p>
-      <p class="lunar muted">Thứ Tư — nhằm ngày 12 tháng 09 năm Bính Ngọ</p>
-    </div>
+    <p class="date-big">21 · 10 · 2026</p>
+    <p class="lunar muted">Thứ Tư — nhằm ngày 12 tháng 09 năm Bính Ngọ</p>
+
     <div class="invite">
       <p class="muted">Trân trọng kính mời</p>
       <p class="guest" id="guest">Quý khách</p>
+      <p class="muted" style="margin-top:14px;">đến dự buổi tiệc chung vui<br>cùng gia đình chúng tôi tại</p>
     </div>
+
+    <p class="venue">Tư gia nhà gái</p>
+    <p class="muted" style="font-size:0.85rem; margin-top:4px;">Thôn Đồng Xa 1, Xã Hoàng Cương, Tỉnh Phú Thọ, Việt Nam</p>
+
+    <div class="when">
+      <p class="time">Vào lúc 11 giờ 00 — Thứ Tư, 21.10.2026</p>
+    </div>
+
+    <p class="announce">Sự hiện diện của quý khách<br>là niềm vinh dự cho gia đình chúng tôi</p>
   </section>
 
-  <section class="formal-invite" style="text-align:center;">
-    <p class="muted">đến dự buổi tiệc chung vui<br>cùng gia đình chúng tôi tại</p>
-    <p style="font:italic 400 1.9rem/1.2 var(--display); color:var(--bronze); margin-top:24px;">Tư gia nhà gái</p>
-    <p class="muted" style="font-size:0.85rem; margin-top:4px;">F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam</p>
-    <div style="margin-top:32px;">
-      <p style="font-weight:500; letter-spacing:0.08em;">Vào lúc: 11 giờ 00 phút</p>
-      <p style="font-weight:500; letter-spacing:0.04em;">Thứ Tư, ngày 21 tháng 10 năm 2026</p>
-      <p class="muted" style="font-size:0.82rem; font-style:italic; margin-top:4px;">(Nhằm ngày 12 tháng 09 năm Bính Ngọ)</p>
-    </div>
-    <p class="announce" style="margin-top:32px;">Sự hiện diện của quý khách<br>là niềm vinh dự cho gia đình chúng tôi</p>
-  </section>
-
-  <section id="map">
+  <section id="map" class="reveal">
     <p class="label">Địa chỉ</p>
     <h2>Đường đến ngày vui</h2>
     <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
@@ -177,19 +209,19 @@ footer .names { font-size: 2.8rem; margin: 12px 0; }
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <p class="label">Album</p>
     <h2>Khoảnh khắc</h2>
     <div class="gallery">
-      <div class="ph wide">Ảnh cưới 1</div>
-      <div class="ph">Ảnh 2</div>
-      <div class="ph">Ảnh 3</div>
-      <div class="ph">Ảnh 4</div>
-      <div class="ph">Ảnh 5</div>
+      <div class="ph wide"><span class="frame"></span><span class="cap">Ảnh cưới 1</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 2</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 3</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 4</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 5</span></div>
     </div>
   </section>
 
-  <footer>
+  <footer class="reveal">
     <p class="label">Cảm ơn bạn</p>
     <p class="names">Ngọc Châm &amp; Long Giang</p>
     <p class="muted">Rất mong được đón tiếp bạn.</p>
@@ -230,6 +262,24 @@ var PLACES = [
     var done = function () { copyLink.textContent = "Đã sao chép"; };
     if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
   });
+})();
+
+// Hiện dần các khối khi cuộn tới
+(function () {
+  var items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || !items.length) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
