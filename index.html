@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ngọc Châm & Long Giang</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Đỗ Ngọc Châm & Vi Long Giang — Thứ Bảy, 12.12.2026">
+<meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Ngọc Châm & Long Giang — Thứ Bảy, 12.12.2026">
 <!-- Ảnh xem trước khi gửi link qua Zalo/Facebook: og-image.jpg (1200x630), URL tuyệt đối theo domain GitHub Pages -->
 <meta property="og:title" content="Thiệp cưới Ngọc Châm & Long Giang">
 <meta property="og:description" content="Thứ Bảy, 12.12.2026 · Trân trọng kính mời">
@@ -88,6 +88,7 @@ a { color: inherit; }
 .when { margin-top: 20px; }
 .when p { font-weight: 500; letter-spacing: 0.04em; }
 .when .time { letter-spacing: 0.08em; }
+.nw { white-space: nowrap; }
 .announce { text-align: center; margin-top: 24px; font: italic 400 1.1rem/1.5 var(--display); text-wrap: balance; }
 
 /* Liên kết */
@@ -186,7 +187,7 @@ footer .names { font-size: 2.4rem; margin: 10px 0; }
     <p class="muted" style="font-size:0.85rem; margin-top:4px;">Thôn Đồng Xa 1, Xã Hoàng Cương, Tỉnh Phú Thọ</p>
 
     <div class="when">
-      <p class="time">Vào lúc 16 giờ 00 — Thứ Bảy, ngày 12 tháng 12, năm 2026</p>
+      <p class="time"><span class="nw">Vào lúc 16 giờ 00 — Thứ Bảy</span><br><span class="nw">ngày 12 tháng 12, năm 2026</span></p>
       <p class="muted" style="font-size:0.82rem; font-style:italic; margin-top:4px;">(Tức ngày 04 tháng 11 năm Bính Ngọ)</p>
     </div>
 
@@ -243,7 +244,7 @@ footer .names { font-size: 2.4rem; margin: 10px 0; }
 // Địa chỉ: sửa tên và địa chỉ thật ở đây
 var PLACES = [
   { name: "Tư gia nhà gái", addr: "F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam" },
-  { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ" }
+  { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ", q: "21.4314750,105.1983320" }
 ];
 (function () {
   var tabs = document.querySelectorAll("[data-place]");
@@ -251,7 +252,7 @@ var PLACES = [
   var current = PLACES[0];
   function show(i) {
     current = PLACES[i];
-    var q = encodeURIComponent(current.addr);
+    var q = encodeURIComponent(current.q || current.addr);
     document.getElementById("place-name").textContent = current.name;
     document.getElementById("place-addr").textContent = current.addr;
     document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
