@@ -54,6 +54,10 @@ button.ghost { background: transparent; color: var(--ink); border: 1px solid var
 .row .url { flex: 2 1 auto; font-size: 0.8rem; color: var(--muted); word-break: break-all; }
 .row button { padding: 8px 14px; font-size: 0.7rem; flex: 0 0 auto; }
 .row button.copied { background: var(--bronze); }
+.side { display: flex; gap: 8px; margin-bottom: 24px; }
+.side label { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 10px 16px; border: 1px solid var(--line); cursor: pointer; color: var(--ink); background: #fff; }
+.side input { width: auto; margin: 0; }
+.side label:has(input:checked) { border-color: var(--bronze); background: var(--tint); }
 .empty { color: var(--muted); font-size: 0.85rem; margin-top: 24px; }
 </style>
 </head>
@@ -62,6 +66,13 @@ button.ghost { background: transparent; color: var(--ink); border: 1px solid var
   <h1>Tạo link mời khách</h1>
   <p class="sub">Nhập tên khách (mỗi dòng một người), bấm "Tạo link" để ra danh sách link cá nhân hoá — gửi mỗi link cho đúng người đó qua Zalo/Messenger.</p>
 
+  <div class="field">
+    <label>Thiệp của bên nào</label>
+    <div class="side">
+      <label><input type="radio" name="side" value="" checked> Nhà gái</label>
+      <label><input type="radio" name="side" value="nha-trai/"> Nhà trai</label>
+    </div>
+  </div>
   <div class="field">
     <label for="base">Link gốc của thiệp</label>
     <input id="base" type="text" value="">
@@ -91,7 +102,16 @@ button.ghost { background: transparent; color: var(--ink); border: 1px solid var
   var empty = document.getElementById("empty");
 
   // Mặc định: cùng thư mục với file này, không kèm index.html
-  baseInput.value = location.href.replace(/[^/]*$/, "");
+  var root = location.href.split(/[?#]/)[0].replace(/[^/]*$/, "");
+  baseInput.value = root;
+
+  // Đổi bên: nhà gái = thư mục gốc, nhà trai = thư mục nha-trai/
+  document.querySelectorAll('input[name="side"]').forEach(function (r) {
+    r.addEventListener("change", function () {
+      baseInput.value = root + r.value;
+      if (list.length) genBtn.click();
+    });
+  });
 
   var list = [];
 

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Long Giang & Ngọc Châm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Long Giang & Ngọc Châm — Thứ Bảy, 12.12.2026">
+<!-- Ảnh xem trước khi gửi link qua Zalo/Facebook: og-image.jpg (1200x630), URL tuyệt đối theo domain GitHub Pages -->
+<meta property="og:title" content="Thiệp cưới Long Giang & Ngọc Châm">
+<meta property="og:description" content="Thứ Bảy, 12.12.2026 · Trân trọng kính mời">
+<meta property="og:image" content="https://humble194.github.io/longgiang_ngoccham/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Không đặt og:url: Messenger/Zalo sẽ mở og:url khi bấm vào thẻ xem trước, làm mất ?to=<tên khách> -->
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;💍&lt;/text&gt;&lt;/svg&gt;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<style>
+/* Layout: một cột hẹp như tấm thiệp giấy, các phần tách bằng khoảng trắng và đường kẻ mảnh; chỉ một tông màu đồng làm điểm nhấn.
+   Chủ ý giữ một giao diện sáng (thiệp in giấy), không đổi theo chế độ tối. */
+:root {
+  --paper: #FBFAF8;
+  --ink: #23252A;
+  --muted: #74757B;
+  --line: #E3E0DA;
+  --bronze: #8C6D4A;
+  --tint: #F1ECE5;
+  --display: "Cormorant Garamond", "Times New Roman", serif;
+  --script: "Great Vibes", "Cormorant Garamond", cursive;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 300 15px/1.7 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.card { max-width: 540px; margin: 0 auto; }
+section { padding-block: 48px; border-top: 1px solid var(--line); }
+section:first-child { border-top: 0; }
+h2 {
+  font: 400 2rem/1.2 var(--display);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+.label {
+  font: 500 0.7rem/1 var(--body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin: 0 0 16px;
+}
+.muted { color: var(--muted); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
+
+/* Bìa + lời mời — gộp thành một khối thông tin duy nhất (Trang 1) */
+.cover { text-align: center; padding-block: 56px 48px; }
+.names {
+  font: 400 clamp(2.8rem, 13vw, 4.2rem)/1.2 var(--script);
+  margin: 18px 0;
+  text-wrap: balance;
+}
+.names em { display: block; font: italic 400 0.5em/1 var(--display); color: var(--bronze); margin: 4px 0; }
+.date-big {
+  font: 400 1.1rem/1 var(--body);
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+.lunar { font-size: 0.82rem; margin-top: 8px; }
+.invite { margin-top: 28px; }
+.guest {
+  font: italic 400 1.7rem/1.2 var(--display);
+  margin-top: 4px;
+  word-break: break-word;
+}
+.venue { font: italic 400 1.6rem/1.2 var(--display); color: var(--bronze); margin-top: 18px; }
+.when { margin-top: 20px; }
+.when p { font-weight: 500; letter-spacing: 0.04em; }
+.when .time { letter-spacing: 0.08em; }
+.nw { white-space: nowrap; }
+.announce { text-align: center; margin-top: 24px; font: italic 400 1.1rem/1.5 var(--display); text-wrap: balance; }
+
+/* Liên kết */
+.links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
+.links a {
+  font-size: 0.8rem; font-weight: 500; text-decoration: none;
+  color: var(--bronze); border-bottom: 1px solid currentColor; padding-bottom: 1px;
+}
+
+/* Album — "mở khung ảnh": khung viền vẽ ra trước, ảnh hiện sau */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+.ph {
+  aspect-ratio: 3 / 4; max-width: 100%;
+  background: var(--tint);
+  display: grid; place-items: center;
+  font: italic 400 1rem/1 var(--display); color: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+.ph .frame {
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(140,109,74,.25);
+  clip-path: inset(50% 50% 50% 50%);
+}
+.ph .cap { opacity: 0; transform: scale(1.06); }
+.ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.is-visible .gallery .ph .frame { animation: frameDraw .6s ease-out both; }
+  .reveal.is-visible .gallery .ph .cap { animation: frameCap .7s ease-out .35s both; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .frame { animation-delay: .1s; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .cap { animation-delay: .45s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .frame { animation-delay: .18s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .cap { animation-delay: .53s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .frame { animation-delay: .26s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .cap { animation-delay: .61s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .frame { animation-delay: .34s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .cap { animation-delay: .69s; }
+  @keyframes frameDraw { to { clip-path: inset(0 0 0 0); } }
+  @keyframes frameCap { to { opacity: 1; transform: none; } }
+}
+
+/* Nút */
+button {
+  font: 500 0.82rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper); border: 0; padding: 16px 20px; cursor: pointer;
+}
+
+/* Địa chỉ */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.tabs button { padding: 10px 14px; font-size: 0.72rem; letter-spacing: 0.1em; }
+.tabs button[aria-selected="false"] { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.place { margin-top: 20px; }
+.place h3 { font: 500 1rem/1.4 var(--body); margin: 0 0 4px; }
+.place .addr { font-size: 1rem; color: var(--ink); }
+.map {
+  margin-top: 16px; width: 100%; max-width: 100%; aspect-ratio: 4 / 3;
+  border: 1px solid var(--line); background: var(--tint); display: block;
+}
+.place .links { margin-top: 14px; }
+
+footer { text-align: center; padding-block: 48px 56px; border-top: 1px solid var(--line); }
+footer .names { font-size: 2.4rem; margin: 10px 0; }
+
+/* Hiện dần khi cuộn tới — áp dụng cho các khối sau phần bìa */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .cover > * { animation: rise .9s ease-out both; }
+  .cover > *:nth-child(2) { animation-delay: .1s; }
+  .cover > *:nth-child(3) { animation-delay: .2s; }
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .gallery .ph .frame { clip-path: none; }
+  .gallery .ph .cap { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<main class="card">
+
+  <section class="cover">
+    <p class="label">Thư mời cưới</p>
+    <h1 class="names">Long Giang <em>&amp;</em> Ngọc Châm</h1>
+
+    <div class="invite">
+      <p class="muted" style="font-size:1.25rem;">Trân trọng kính mời</p>
+      <p class="guest" id="guest">Quý khách</p>
+      <p class="muted" style="margin-top:14px;">đến dự bữa cơm thân mật<br>cùng gia đình chúng tôi tại</p>
+    </div>
+
+    <p class="venue">Tư gia nhà trai</p>
+    <p class="muted" style="font-size:0.85rem; margin-top:4px;">Thôn Đông Thượng 2, Xã Đông Thành, Tỉnh Phú Thọ</p>
+
+    <div class="when">
+      <p class="time"><span class="nw">Vào lúc 16 giờ 00 — Thứ Bảy</span><br><span class="nw">ngày 12 tháng 12, năm 2026</span></p>
+      <p class="muted" style="font-size:0.82rem; font-style:italic; margin-top:4px;">(Tức ngày 04 tháng 11 năm Bính Ngọ)</p>
+    </div>
+
+    <p class="announce">Sự hiện diện của quý khách<br>là niềm vinh dự cho gia đình chúng tôi</p>
+  </section>
+
+  <section id="map" class="reveal">
+    <p class="label">Địa chỉ</p>
+    <h2>Đường đến ngày vui</h2>
+    <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
+      <button type="button" role="tab" id="tab-trai" aria-selected="true" data-place="1">Nhà trai</button>
+      <button type="button" role="tab" id="tab-gai" aria-selected="false" data-place="0">Nhà gái</button>
+    </div>
+    <div class="place" role="tabpanel" aria-live="polite">
+      <h3 id="place-name">Tư gia nhà trai</h3>
+      <p class="addr" id="place-addr">xã Đông Thành, Tỉnh Phú Thọ</p>
+      <iframe class="map" id="place-map" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=21.4314750%2C105.1983320&z=16&output=embed"></iframe>
+      <div class="links">
+        <a id="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=21.4314750%2C105.1983320">Mở Google Maps</a>
+        <a href="#" id="place-copy">Sao chép địa chỉ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="label">Album</p>
+    <h2>Khoảnh khắc</h2>
+    <div class="gallery">
+      <div class="ph wide"><span class="frame"></span><span class="cap">Ảnh cưới 1</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 2</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 3</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 4</span></div>
+      <div class="ph"><span class="frame"></span><span class="cap">Ảnh 5</span></div>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <p class="label">Cảm ơn bạn</p>
+    <p class="names">Long Giang &amp; Ngọc Châm</p>
+    <p class="muted">Rất mong được đón tiếp bạn.</p>
+  </footer>
+</main>
+
+<script>
+// Tên khách từ link: index.html?to=Anh%20Minh
+(function () {
+  var name = "";
+  try { name = new URLSearchParams(location.search).get("to") || ""; } catch (e) {}
+  name = name.trim().slice(0, 60);
+  if (name) document.getElementById("guest").textContent = name;
+})();
+
+// Địa chỉ: sửa tên và địa chỉ thật ở đây
+var PLACES = [
+  { name: "Tư gia nhà gái", addr: "F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam" },
+  { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ", q: "21.4314750,105.1983320" }
+];
+(function () {
+  var tabs = document.querySelectorAll("[data-place]");
+  var copyLink = document.getElementById("place-copy");
+  var current = PLACES[1];
+  function show(i) {
+    current = PLACES[i];
+    var q = encodeURIComponent(current.q || current.addr);
+    document.getElementById("place-name").textContent = current.name;
+    document.getElementById("place-addr").textContent = current.addr;
+    document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
+    document.getElementById("place-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.place == i)); });
+    copyLink.textContent = "Sao chép địa chỉ";
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(+t.dataset.place); }); });
+  copyLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    var done = function () { copyLink.textContent = "Đã sao chép"; };
+    if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
+  });
+})();
+
+// Hiện dần các khối khi cuộn tới
+(function () {
+  var items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || !items.length) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
