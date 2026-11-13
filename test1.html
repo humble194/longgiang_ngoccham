@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ngọc Châm & Long Giang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Ngọc Châm & Long Giang — Thứ Bảy, 12.12.2026">
+<!-- Ảnh xem trước khi gửi link qua Zalo/Facebook: og-image.jpg (1200x630), URL tuyệt đối theo domain GitHub Pages -->
+<meta property="og:title" content="Thiệp cưới Ngọc Châm & Long Giang">
+<meta property="og:description" content="Thứ Bảy, 12.12.2026 · Trân trọng kính mời">
+<meta property="og:image" content="https://humble194.github.io/longgiang_ngoccham/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Không đặt og:url: Messenger/Zalo sẽ mở og:url khi bấm vào thẻ xem trước, làm mất ?to=<tên khách> -->
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;💍&lt;/text&gt;&lt;/svg&gt;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Fraunces:wght@300;500;600&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<style>
+/* Thiết kế: thiệp kính mời "đêm tiệc ánh nến" — ảnh cưới làm mờ phía sau tạo chiều sâu,
+   khối nội dung là tấm kính mờ (glass panel) nổi trên nền, điểm nhấn tím lavender huyền ảo.
+   Chủ ý giữ một giao diện tối duy nhất, không đổi theo chế độ hệ thống. */
+:root {
+  --bg: #140F1C;
+  --panel: rgba(20, 15, 28, 0.6);
+  --panel-border: rgba(157, 143, 194, 0.32);
+  --cream: #F4EADA;
+  --cream-dim: #B6A9C6;
+  --violet: #736499;
+  --violet-light: #9D8FC2;
+  --violet-deep: #453A61;
+  --line: rgba(157, 143, 194, 0.18);
+  --display: "Fraunces", "Cormorant Garamond", serif;
+  --accent: "Cormorant Garamond", serif;
+  --script: "Great Vibes", "Cormorant Garamond", cursive;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font: 300 15px/1.75 var(--body);
+  padding-top: 40px;
+  padding-bottom: 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: -40px;
+  background: url("og-image.jpg") center/cover no-repeat;
+  filter: blur(14px) saturate(0.65) brightness(0.52) sepia(0.15) hue-rotate(205deg);
+  transform: scale(1.12);
+  z-index: -3;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(20,15,28,0.05) 0%, rgba(20,15,28,0.55) 55%, rgba(10,7,15,0.92) 100%);
+  background-size: 160px 160px, cover;
+  background-blend-mode: overlay, normal;
+  z-index: -2;
+}
+.card {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--panel);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,.04) inset;
+}
+.card::before, .card::after {
+  content: "";
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 1px solid var(--violet);
+  opacity: .5;
+  pointer-events: none;
+}
+.card::before { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+.card::after { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+section { padding: 52px 28px; border-top: 1px solid var(--line); }
+section:first-child { border-top: 0; }
+h2 {
+  font: 500 2.1rem/1.25 var(--display);
+  margin: 0 0 20px;
+  text-wrap: balance;
+  color: var(--cream);
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, var(--violet), transparent);
+  transition: width .9s cubic-bezier(.16,.84,.44,1) .1s;
+}
+.reveal.is-visible h2::after { width: 56px; }
+.label {
+  font: 500 0.7rem/1 var(--body);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--violet-light);
+  margin: 0 0 18px;
+}
+.label::after { content: " ✦"; color: var(--violet-deep); }
+.muted { color: var(--cream-dim); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--violet-light); outline-offset: 3px; }
+
+/* Bìa + lời mời — gộp thành một khối thông tin duy nhất (Trang 1) */
+.cover { text-align: center; padding: 64px 28px 52px; }
+.names {
+  font: 400 clamp(2.5rem, 10.5vw, 4.4rem)/1.2 var(--script);
+  margin: 20px 0;
+  text-wrap: balance;
+  color: var(--cream);
+  text-shadow: 0 0 42px rgba(157,143,194,.4);
+}
+.names em { display: block; font: italic 400 0.42em/1 var(--accent); color: var(--violet-light); margin: 6px 0; }
+.date-big {
+  font: 400 1.1rem/1 var(--body);
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+.lunar { font-size: 0.82rem; margin-top: 8px; }
+.invite { margin-top: 28px; }
+.guest {
+  font: italic 400 1.7rem/1.2 var(--accent);
+  color: var(--cream);
+  margin-top: 4px;
+  word-break: break-word;
+}
+.venue { font: italic 400 1.6rem/1.2 var(--accent); color: var(--violet-light); margin-top: 18px; }
+.when { margin-top: 20px; }
+.when p { font-weight: 500; letter-spacing: 0.04em; color: var(--cream); }
+.when .time { letter-spacing: 0.08em; }
+.nw { white-space: nowrap; }
+.announce { text-align: center; margin-top: 24px; font: italic 400 1.1rem/1.5 var(--accent); text-wrap: balance; color: var(--cream-dim); }
+
+/* Liên kết */
+.links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
+.links a {
+  font-size: 0.8rem; font-weight: 500; text-decoration: none;
+  color: var(--violet-light); border-bottom: 1px solid currentColor; padding-bottom: 1px;
+}
+
+/* Album — "mở khung ảnh": khung viền vẽ ra trước, ảnh hiện sau */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+.ph {
+  aspect-ratio: 3 / 4; max-width: 100%;
+  background: linear-gradient(160deg, rgba(157,143,194,.12), rgba(255,255,255,.02));
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.ph .cap {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  opacity: 0; transform: scale(1.06);
+}
+.ph .frame {
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(157,143,194,.45);
+  clip-path: inset(50% 50% 50% 50%);
+}
+.ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before { animation: drift 42s ease-in-out infinite alternate; }
+  .reveal.is-visible .gallery .ph .frame { animation: frameDraw .6s ease-out both; }
+  .reveal.is-visible .gallery .ph .cap { animation: frameCap .7s ease-out .35s both; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .frame { animation-delay: .1s; }
+  .reveal.is-visible .gallery .ph:nth-child(2) .cap { animation-delay: .45s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .frame { animation-delay: .18s; }
+  .reveal.is-visible .gallery .ph:nth-child(3) .cap { animation-delay: .53s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .frame { animation-delay: .26s; }
+  .reveal.is-visible .gallery .ph:nth-child(4) .cap { animation-delay: .61s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .frame { animation-delay: .34s; }
+  .reveal.is-visible .gallery .ph:nth-child(5) .cap { animation-delay: .69s; }
+  @keyframes frameDraw { to { clip-path: inset(0 0 0 0); } }
+  @keyframes frameCap { to { opacity: 1; transform: none; } }
+  @keyframes drift { from { transform: scale(1.12); } to { transform: scale(1.22) translate3d(-1%, -1%, 0); } }
+}
+
+/* Nút */
+button {
+  font: 500 0.82rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--violet-light); color: var(--bg); border: 0; padding: 15px 20px; cursor: pointer;
+  transition: filter .2s ease, transform .2s ease;
+}
+button:hover { filter: brightness(1.12); transform: translateY(-1px); }
+
+/* Địa chỉ */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.tabs button { padding: 10px 14px; font-size: 0.72rem; letter-spacing: 0.1em; }
+.tabs button[aria-selected="false"] { background: transparent; color: var(--cream); border: 1px solid var(--panel-border); }
+.tabs button[aria-selected="false"]:hover { border-color: var(--violet-light); color: var(--violet-light); }
+.place { margin-top: 20px; }
+.place h3 { font: 500 1rem/1.4 var(--body); margin: 0 0 4px; color: var(--cream); }
+.place .addr { font-size: 1rem; color: var(--cream-dim); }
+.map {
+  margin-top: 16px; width: 100%; max-width: 100%; aspect-ratio: 4 / 3;
+  border: 1px solid var(--panel-border); background: rgba(255,255,255,.03); display: block;
+  filter: grayscale(.35) sepia(.3) saturate(1.1) brightness(.62) contrast(1.1) hue-rotate(235deg);
+}
+.place .links { margin-top: 14px; }
+
+footer { text-align: center; padding: 56px 28px 64px; border-top: 1px solid var(--line); position: relative; }
+footer::before { content: "✦"; display: block; color: var(--violet); font-size: 1rem; margin-bottom: 18px; opacity: .85; }
+footer .names { font-size: 2.6rem; margin: 14px 0; color: var(--cream); text-shadow: 0 0 32px rgba(157,143,194,.35); }
+
+/* Hiện dần khi cuộn tới — áp dụng cho các khối sau phần bìa */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .cover > * { animation: rise .9s ease-out both; }
+  .cover > *:nth-child(2) { animation-delay: .1s; }
+  .cover > *:nth-child(3) { animation-delay: .2s; }
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .gallery .ph .frame { clip-path: none; }
+  .gallery .ph .cap { opacity: 1; transform: none; }
+  h2::after { width: 56px; transition: none; }
+}
+</style>
+</head>
+<body>
+<main class="card">
+
+  <section class="cover">
+    <p class="label">Thư mời cưới</p>
+    <h1 class="names">Ngọc Châm <em>&amp;</em> Long Giang</h1>
+
+    <div class="invite">
+      <p class="muted" style="font-size:1.25rem;">Trân trọng kính mời</p>
+      <p class="guest" id="guest">Quý khách</p>
+      <p class="muted" style="margin-top:14px;">đến dự bữa cơm thân mật<br>cùng gia đình chúng tôi tại</p>
+    </div>
+
+    <p class="venue">Tư gia nhà gái</p>
+    <p class="muted" style="font-size:0.85rem; margin-top:4px;">Thôn Đồng Xa 1, Xã Hoàng Cương, Tỉnh Phú Thọ</p>
+
+    <div class="when">
+      <p class="time"><span class="nw">Vào lúc 16 giờ 00 — Thứ Bảy</span><br><span class="nw">ngày 12 tháng 12, năm 2026</span></p>
+      <p class="muted" style="font-size:0.82rem; font-style:italic; margin-top:4px;">(Tức ngày 04 tháng 11 năm Bính Ngọ)</p>
+    </div>
+
+    <p class="announce">Sự hiện diện của quý khách<br>là niềm vinh dự cho gia đình chúng tôi</p>
+  </section>
+
+  <section id="map" class="reveal">
+    <p class="label">Địa chỉ</p>
+    <h2>Đường đến ngày vui</h2>
+    <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
+      <button type="button" role="tab" id="tab-gai" aria-selected="true" data-place="0">Nhà gái</button>
+      <button type="button" role="tab" id="tab-trai" aria-selected="false" data-place="1">Nhà trai</button>
+    </div>
+    <div class="place" role="tabpanel" aria-live="polite">
+      <h3 id="place-name">Tư gia nhà gái</h3>
+      <p class="addr" id="place-addr">F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam</p>
+      <iframe class="map" id="place-map" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam&z=16&output=embed"></iframe>
+      <div class="links">
+        <a id="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam">Mở Google Maps</a>
+        <a href="#" id="place-copy">Sao chép địa chỉ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="label">Album</p>
+    <h2>Khoảnh khắc</h2>
+    <div class="gallery">
+      <div class="ph wide"><img class="cap" src="images/web/album-wide.jpg" alt="Ngọc Châm & Long Giang tại studio" loading="lazy"><span class="frame"></span></div>
+      <div class="ph"><img class="cap" src="images/web/album-2.jpg" alt="Chú rể và cô dâu trong studio" loading="lazy"><span class="frame"></span></div>
+      <div class="ph"><img class="cap" src="images/web/album-3.jpg" alt="Tiệc chào mừng ngoài vườn" loading="lazy"><span class="frame"></span></div>
+      <div class="ph"><img class="cap" src="images/web/album-4.jpg" alt="Dạo bước giữa vườn hồng" loading="lazy"><span class="frame"></span></div>
+      <div class="ph"><img class="cap" src="images/web/album-5.jpg" alt="Khoảnh khắc tinh nghịch" loading="lazy"><span class="frame"></span></div>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <p class="label">Cảm ơn bạn</p>
+    <p class="names">Ngọc Châm &amp; Long Giang</p>
+    <p class="muted">Rất mong được đón tiếp bạn.</p>
+  </footer>
+</main>
+
+<script>
+// Tên khách từ link: index.html?to=Anh%20Minh
+(function () {
+  var name = "";
+  try { name = new URLSearchParams(location.search).get("to") || ""; } catch (e) {}
+  name = name.trim().slice(0, 60);
+  if (name) document.getElementById("guest").textContent = name;
+})();
+
+// Địa chỉ: sửa tên và địa chỉ thật ở đây
+var PLACES = [
+  { name: "Tư gia nhà gái", addr: "F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam" },
+  { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ", q: "21.4314750,105.1983320" }
+];
+(function () {
+  var tabs = document.querySelectorAll("[data-place]");
+  var copyLink = document.getElementById("place-copy");
+  var current = PLACES[0];
+  function show(i) {
+    current = PLACES[i];
+    var q = encodeURIComponent(current.q || current.addr);
+    document.getElementById("place-name").textContent = current.name;
+    document.getElementById("place-addr").textContent = current.addr;
+    document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
+    document.getElementById("place-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.place == i)); });
+    copyLink.textContent = "Sao chép địa chỉ";
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(+t.dataset.place); }); });
+  copyLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    var done = function () { copyLink.textContent = "Đã sao chép"; };
+    if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
+  });
+})();
+
+// Hiện dần các khối khi cuộn tới
+(function () {
+  var items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || !items.length) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
