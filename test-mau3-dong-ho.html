@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ngọc Châm & Long Giang</title>
+  <meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Ngọc Châm & Long Giang — Thứ Bảy, 12.12.2026">
+  <meta property="og:title" content="Thiệp cưới Ngọc Châm & Long Giang">
+  <meta property="og:description" content="Thứ Bảy, 12.12.2026 · Trân trọng kính mời">
+  <meta property="og:image" content="https://humble194.github.io/longgiang_ngoccham/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;rect x=%2210%22 y=%2210%22 width=%2280%22 height=%2280%22 fill=%22%23B5322A%22/&gt;&lt;/svg&gt;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+  <style>
+    /* MẪU 3 — "Mộc bản giấy điệp": tranh khắc gỗ Đông Hồ. Màu khoáng, các bản in lệch nhau như in tay. */
+    :root {
+      --cham: #2E4A62;
+      --cham-deep: #1F3446;
+      --diep: #EBDDBF;
+      --hoe: #E8B739;
+      --son: #B5322A;
+      --than: #1C1B19;
+      --than-soft: #4A443B;
+      --display: "Alegreya", Georgia, serif;
+      --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--cham);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6 0.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+      color: var(--than);
+      font: 400 15.5px/1.75 var(--body);
+      padding: 28px max(14px, env(safe-area-inset-right, 0px)) 56px max(14px, env(safe-area-inset-left, 0px));
+    }
+    p { margin: 0; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--hoe); outline-offset: 3px; }
+
+    /* Tờ giấy điệp: thớ giấy + ánh vỏ điệp lấp lánh */
+    .print {
+      max-width: 520px; margin: 0 auto; position: relative;
+      background-color: var(--diep);
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.75) 0 .8px, transparent 1.4px),
+        radial-gradient(circle at 63% 41%, rgba(255,255,255,.6) 0 .7px, transparent 1.3px),
+        radial-gradient(circle at 37% 77%, rgba(255,255,255,.7) 0 .9px, transparent 1.5px),
+        radial-gradient(circle at 88% 66%, rgba(255,255,255,.55) 0 .6px, transparent 1.2px),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.4' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.36 0 0 0 0 0.22 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+      background-size: 23px 29px, 31px 19px, 17px 27px, 41px 37px, 240px 240px;
+      border: 3px solid var(--than);
+      box-shadow: inset 0 0 0 6px var(--son), 0 30px 60px -30px rgba(0,0,0,.6);
+      padding: 18px;
+    }
+    .print::before {
+      content: ""; position: absolute; inset: 11px; border: 1.5px solid var(--than); pointer-events: none;
+    }
+
+    /* ---------- Bìa ---------- */
+    .cover { position: relative; padding: 36px 18px 30px; text-align: center; }
+    .caption {
+      position: absolute; top: 22px; left: 14px;
+      writing-mode: vertical-rl; text-orientation: mixed;
+      font: 700 1rem/1 var(--display); letter-spacing: .12em; color: var(--than);
+    }
+    .seal {
+      position: absolute; top: 18px; right: 14px; width: 58px; height: 58px;
+      background: var(--son); color: var(--diep);
+      display: grid; place-content: center; text-align: center;
+      font: 800 .92rem/1.05 var(--display);
+      filter: url(#rough);
+      transform: rotate(3deg);
+    }
+    .names {
+      margin: 116px 0 0; font: 800 clamp(3rem, 15vw, 4.6rem)/1.02 var(--display);
+      letter-spacing: -.01em;
+    }
+    .layer {
+      display: block; position: relative; isolation: isolate; color: var(--than);
+    }
+    .layer::before, .layer::after {
+      content: attr(data-text); position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    }
+    .layer::before { color: var(--hoe); transform: translate(3px, 3px); }
+    .layer::after { color: var(--son); transform: translate(-2px, 1.5px); }
+    .layer.amp { font-style: italic; font-weight: 500; font-size: .55em; margin: 4px 0; }
+
+    .invite { margin-top: 30px; }
+    .invite .lead { font-size: 1.05rem; color: var(--than-soft); }
+    .guest { font: italic 500 1.9rem/1.2 var(--display); margin-top: 2px; word-break: break-word; }
+    .invite .rest { margin-top: 10px; color: var(--than-soft); }
+
+    /* Cartouche thông tin — như ô chữ trên tranh */
+    .plate {
+      margin: 26px auto 0; max-width: 360px; position: relative;
+      background: var(--hoe); border: 2px solid var(--than);
+      padding: 18px 16px 16px;
+    }
+    .plate::after {
+      content: ""; position: absolute; inset: 4px; border: 1px solid rgba(28,27,25,.55); pointer-events: none;
+    }
+    .venue { font: 800 1.5rem/1.2 var(--display); }
+    .addr-line { font-size: .86rem; margin-top: 2px; }
+    .time { margin-top: 12px; padding-top: 12px; border-top: 1.5px solid var(--than); font-weight: 600; }
+    .time .big { display: block; font: 800 2.1rem/1.1 var(--display); color: var(--son); }
+    .lunar { font: italic 500 .95rem/1.4 var(--display); margin-top: 4px; }
+    .announce { margin-top: 24px; font: italic 500 1.12rem/1.5 var(--display); color: var(--than-soft); text-wrap: balance; }
+    .nw { white-space: nowrap; }
+
+    /* Dải hoạ tiết sóng nước giữa các phần */
+    .band {
+      height: 16px; margin: 0 -7px;
+      background:
+        radial-gradient(circle at 8px 16px, transparent 6px, var(--than) 6.5px, var(--than) 8px, var(--cham) 8.5px) 0 0/16px 16px repeat-x;
+      border-top: 2px solid var(--than); border-bottom: 2px solid var(--than);
+    }
+
+    section { padding: 34px 10px; }
+    h2 { font: 800 2.1rem/1.1 var(--display); margin: 0; text-wrap: balance; }
+    .sub { font: italic 500 1rem/1.4 var(--display); color: var(--son); margin-top: 4px; }
+
+    .tabs { display: flex; gap: 10px; margin-top: 20px; }
+    .tabs button {
+      font: 600 .88rem/1 var(--body); padding: 11px 18px; cursor: pointer;
+      border: 2px solid var(--than); background: transparent; color: var(--than);
+    }
+    .tabs button[aria-selected="true"] { background: var(--son); color: var(--diep); }
+    .tabs button[aria-selected="false"]:hover { background: rgba(232,183,57,.35); }
+    .place { margin-top: 16px; }
+    .place h3 { font: 800 1.25rem/1.3 var(--display); margin: 0; }
+    .place .addr { color: var(--than-soft); }
+    .map {
+      margin-top: 14px; width: 100%; aspect-ratio: 4 / 3; display: block;
+      border: 2px solid var(--than); outline: 4px solid var(--diep); outline-offset: -8px;
+      filter: sepia(.5) saturate(.7) contrast(1.05);
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
+    .links a { font-weight: 600; color: var(--son); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .ph { aspect-ratio: 3 / 4; border: 2px solid var(--than); padding: 5px; }
+    .ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+    .ph img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; filter: sepia(.28) saturate(.8) contrast(1.04); }
+
+    footer { text-align: center; padding: 36px 10px 26px; }
+    footer .seal { position: static; margin: 0 auto 16px; width: 72px; height: 72px; font-size: 1.08rem; }
+    footer .names-small { font: 800 1.9rem/1.2 var(--display); }
+    footer p:last-child { margin-top: 6px; color: var(--than-soft); }
+
+    /* Khoảnh khắc chính: các bản màu lần lượt "in" chồng lên nhau */
+    @media (prefers-reduced-motion: no-preference) {
+      .layer::before { animation: press .45s ease-out .25s both; }
+      .layer::after { animation: press .45s ease-out .75s both; }
+      .layer { animation: inkIn .5s ease-out 1.25s both; }
+      .cover .seal { animation: stamp .35s cubic-bezier(.3,1.6,.6,1) 1.8s both; }
+      @keyframes press { from { opacity: 0; transform: translate(0, 0); } }
+      @keyframes inkIn { from { color: transparent; } }
+      @keyframes stamp { from { opacity: 0; transform: scale(1.5) rotate(3deg); } to { opacity: 1; transform: rotate(3deg); } }
+    }
+  </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3.5"/></filter>
+</svg>
+
+<main class="print">
+  <section class="cover">
+    <p class="caption">Thư mời cưới</p>
+    <p class="seal" aria-hidden="true">Châm<br>Giang</p>
+
+    <h1 class="names">
+      <span class="layer" data-text="Ngọc Châm">Ngọc Châm</span>
+      <span class="layer amp" data-text="&amp;">&amp;</span>
+      <span class="layer" data-text="Long Giang">Long Giang</span>
+    </h1>
+
+    <div class="invite">
+      <p class="lead">Trân trọng kính mời</p>
+      <p class="guest" id="guest">Quý khách</p>
+      <p class="rest">đến dự bữa cơm thân mật<br>cùng gia đình chúng tôi tại</p>
+    </div>
+
+    <div class="plate">
+      <p class="venue">Tư gia nhà gái</p>
+      <p class="addr-line">Thôn Đồng Xa 1, Xã Hoàng Cương,<br>Tỉnh Phú Thọ</p>
+      <p class="time"><span class="big">16 giờ 00</span><span class="nw">Thứ Bảy,</span> <span class="nw">ngày 12 tháng 12, năm 2026</span></p>
+      <p class="lunar">(Tức ngày 04 tháng 11 năm Bính Ngọ)</p>
+    </div>
+
+    <p class="announce">Sự hiện diện của quý khách<br>là niềm vinh dự cho gia đình chúng tôi</p>
+  </section>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <section id="map">
+    <h2>Đường đến ngày vui</h2>
+    <p class="sub">Địa chỉ hai nhà</p>
+    <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
+      <button type="button" role="tab" id="tab-gai" aria-selected="true" data-place="0">Nhà gái</button>
+      <button type="button" role="tab" id="tab-trai" aria-selected="false" data-place="1">Nhà trai</button>
+    </div>
+    <div class="place" role="tabpanel" aria-live="polite">
+      <h3 id="place-name">Tư gia nhà gái</h3>
+      <p class="addr" id="place-addr">F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam</p>
+      <iframe class="map" id="place-map" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam&z=16&output=embed"></iframe>
+      <div class="links">
+        <a id="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam">Mở Google Maps</a>
+        <a href="#" id="place-copy">Sao chép địa chỉ</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <section>
+    <h2>Khoảnh khắc</h2>
+    <p class="sub">Album ảnh cưới</p>
+    <div class="gallery">
+      <div class="ph wide"><img src="images/web/album-wide.jpg" alt="Ngọc Châm & Long Giang tại studio" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-2.jpg" alt="Chú rể và cô dâu trong studio" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-3.jpg" alt="Tiệc chào mừng ngoài vườn" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-4.jpg" alt="Dạo bước giữa vườn hồng" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-5.jpg" alt="Khoảnh khắc tinh nghịch" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <footer>
+    <p class="seal" aria-hidden="true">Châm<br>Giang</p>
+    <p class="names-small">Ngọc Châm &amp; Long Giang</p>
+    <p>Rất mong được đón tiếp bạn.</p>
+  </footer>
+</main>
+
+<script>
+  // Tên khách từ link: ?to=Anh%20Minh
+  (function () {
+    var name = "";
+    try { name = new URLSearchParams(location.search).get("to") || ""; } catch (e) {}
+    name = name.trim().slice(0, 60);
+    if (name) document.getElementById("guest").textContent = name;
+  })();
+
+  // Địa chỉ: sửa tên và địa chỉ thật ở đây
+  var PLACES = [
+    { name: "Tư gia nhà gái", addr: "F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam" },
+    { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ", q: "21.4314750,105.1983320" }
+  ];
+  (function () {
+    var tabs = document.querySelectorAll("[data-place]");
+    var copyLink = document.getElementById("place-copy");
+    var current = PLACES[0];
+    function show(i) {
+      current = PLACES[i];
+      var q = encodeURIComponent(current.q || current.addr);
+      document.getElementById("place-name").textContent = current.name;
+      document.getElementById("place-addr").textContent = current.addr;
+      document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
+      document.getElementById("place-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.place == i)); });
+      copyLink.textContent = "Sao chép địa chỉ";
+    }
+    tabs.forEach(function (t) { t.addEventListener("click", function () { show(+t.dataset.place); }); });
+    copyLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      var done = function () { copyLink.textContent = "Đã sao chép"; };
+      if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
+    });
+  })();
+</script>
+</body>
+</html>
