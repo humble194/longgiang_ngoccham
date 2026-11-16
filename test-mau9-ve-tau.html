@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ngọc Châm & Long Giang</title>
+  <meta name="description" content="Trân trọng kính mời bạn đến dự lễ cưới của Ngọc Châm & Long Giang — Thứ Bảy, 12.12.2026">
+  <meta property="og:title" content="Thiệp cưới Ngọc Châm & Long Giang">
+  <meta property="og:description" content="Thứ Bảy, 12.12.2026 · Trân trọng kính mời">
+  <meta property="og:image" content="https://humble194.github.io/longgiang_ngoccham/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🎫&lt;/text&gt;&lt;/svg&gt;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap">
+  <style>
+    /* MẪU 9 — "Vé tàu ngày vui": tấm vé từ ga nhà trai (Đông Thành) tới ga nhà gái (Hoàng Cương).
+       Giấy vé xanh nhạt có hoa văn chống giả, cuống vé đục lỗ. Bấm "Soát vé" để bấm lỗ và đóng dấu. */
+    :root {
+      --platform: #DCE3E1;
+      --paper: #E9F0E6;
+      --guilloche: #9CC3B0;
+      --green: #1F5C46;
+      --ink: #1E2A25;
+      --dim: #5D6B64;
+      --red: #C2312A;
+      --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--platform); color: var(--ink);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+      font: 400 15px/1.6 var(--body);
+      padding: 28px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px));
+    }
+    p { margin: 0; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+    main { max-width: 440px; margin: 0 auto; }
+    .nw { white-space: nowrap; }
+
+    .ticket { position: relative; filter: drop-shadow(0 18px 24px rgba(30,42,37,.22)); }
+    .paper {
+      background-color: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='22' fill='none' stroke='%239CC3B0' stroke-width='.8' stroke-opacity='.65'%3E%3Cpath d='M0 11 C20 0 40 22 60 11 S100 0 120 11'/%3E%3Cpath d='M0 11 C20 22 40 0 60 11 S100 22 120 11'/%3E%3C/svg%3E");
+      background-size: 120px 22px;
+    }
+    .t-head {
+      background: var(--green); color: var(--paper); border-radius: 10px 10px 0 0;
+      display: flex; justify-content: space-between; align-items: center; padding: 12px 20px;
+      font: 600 1rem/1 var(--display); letter-spacing: .03em;
+    }
+    .t-head .no { font-variant-numeric: tabular-nums; opacity: .85; }
+    .t-body { padding: 22px 20px 20px; position: relative; }
+
+    .train { font: 500 .95rem/1.2 var(--display); color: var(--green); letter-spacing: .02em; }
+    .names { margin: 4px 0 0; font: 700 clamp(2.4rem, 12vw, 3.2rem)/.98 var(--display); letter-spacing: -.005em; }
+    .names .amp { color: var(--red); }
+
+    .route { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 10px; margin-top: 22px; padding-top: 16px; border-top: 1.5px solid var(--ink); }
+    .stop .k { font: 400 .78rem/1.3 var(--body); color: var(--dim); }
+    .stop .v { font: 700 1.45rem/1.05 var(--display); white-space: nowrap; }
+    .stop .who { font: 500 .85rem/1.3 var(--body); color: var(--green); }
+    .stop.to { text-align: right; }
+    .track { width: 48px; height: 24px; margin-bottom: 18px; color: var(--green); }
+
+    .fields { display: grid; grid-template-columns: 1fr 1fr; margin-top: 18px; border: 1.5px solid var(--ink); }
+    .f { padding: 9px 12px 10px; }
+    .f + .f { border-left: 1.5px solid var(--ink); }
+    .f.full { grid-column: span 2; border-left: 0; }
+    .f.full, .f.row-start { border-left: 0; }
+    .f:not(:first-child) { border-top: 1.5px solid var(--ink); }
+    .f .k { font: 400 .76rem/1.3 var(--body); color: var(--dim); }
+    .f .v { font: 600 1.35rem/1.15 var(--display); margin-top: 2px; font-variant-numeric: tabular-nums; }
+    .f .v.small { font: 500 .92rem/1.4 var(--body); }
+    .guest { font: 700 1.9rem/1.1 var(--display); color: var(--green); word-break: break-word; }
+    .f .after { font-size: .88rem; color: var(--dim); margin-top: 4px; }
+    .lunar { font-size: .8rem; color: var(--dim); margin-top: 2px; }
+
+    /* dấu soát vé */
+    .stamp {
+      position: absolute; right: 10px; bottom: 6px; width: 112px; height: 112px; color: var(--red);
+      opacity: 0; transform: scale(1.6) rotate(-14deg); pointer-events: none; mix-blend-mode: multiply;
+    }
+    .ticket.is-checked .stamp { opacity: .88; transform: rotate(-14deg); }
+
+    /* đường đục lỗ với hai khấc tròn hai bên */
+    .perf {
+      height: 26px; position: relative;
+      -webkit-mask: radial-gradient(circle 13px at 0 50%, #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% 50%, #0000 97%, #000) right / 51% 100% no-repeat;
+      mask: radial-gradient(circle 13px at 0 50%, #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% 50%, #0000 97%, #000) right / 51% 100% no-repeat;
+    }
+    .perf::after { content: ""; position: absolute; left: 20px; right: 20px; top: 50%; border-top: 2px dashed rgba(30,42,37,.45); }
+
+    .t-stub { padding: 14px 20px 20px; border-radius: 0 0 10px 10px; display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; position: relative; }
+    .stub-k { font: 600 .95rem/1 var(--display); color: var(--green); }
+    .announce { font: 300 .92rem/1.5 var(--body); margin-top: 6px; color: var(--ink); }
+    .barcode { height: 34px; margin-top: 12px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 12px, var(--ink) 12px 13px, transparent 13px 17px); opacity: .85; }
+    .check {
+      font: 600 1rem/1 var(--display); letter-spacing: .03em; padding: 14px 16px; cursor: pointer;
+      background: var(--red); color: #fff; border: 0; border-radius: 6px; align-self: start;
+    }
+    .check:disabled { background: transparent; color: var(--red); border: 1.5px solid var(--red); cursor: default; }
+    .hole { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--platform); right: 46px; bottom: 16px; box-shadow: inset 0 2px 3px rgba(0,0,0,.25); transform: scale(0); }
+    .ticket.is-checked .hole { transform: scale(1); }
+
+    /* các thẻ phụ */
+    .card { margin-top: 28px; border-radius: 10px; padding: 22px 20px 22px; box-shadow: 0 12px 20px -14px rgba(30,42,37,.3); }
+    h2 { font: 700 2.1rem/1 var(--display); margin: 0; text-wrap: balance; }
+    .sub { color: var(--dim); font-size: .9rem; margin-top: 4px; }
+    .tabs { display: flex; gap: 8px; margin-top: 18px; }
+    .tabs button {
+      font: 600 1rem/1 var(--display); letter-spacing: .03em; padding: 11px 18px; cursor: pointer; border-radius: 6px;
+      border: 1.5px solid var(--green); background: transparent; color: var(--green);
+    }
+    .tabs button[aria-selected="true"] { background: var(--green); color: var(--paper); }
+    .place { margin-top: 16px; }
+    .place h3 { font: 700 1.4rem/1.15 var(--display); margin: 0; }
+    .place .addr { color: var(--dim); font-size: .92rem; }
+    .map { margin-top: 14px; width: 100%; aspect-ratio: 4 / 3; display: block; border: 1.5px solid var(--ink); border-radius: 6px; background: #dfe7e2; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
+    .links a { font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+    .ph { aspect-ratio: 3 / 4; overflow: hidden; border-radius: 6px; border: 1.5px solid var(--ink); }
+    .ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+    .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    footer { text-align: center; padding: 34px 0 0; }
+    footer .names-small { font: 700 2rem/1.1 var(--display); }
+    footer .bye { color: var(--dim); margin-top: 6px; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .stamp { transition: opacity .12s ease-out .15s, transform .28s cubic-bezier(.3,1.5,.6,1) .15s; }
+      .hole { transition: transform .15s ease-out; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <article class="ticket" id="ticket">
+    <header class="t-head"><span>Vé mời cưới</span><span class="no">Số 1212 2026</span></header>
+
+    <div class="t-body paper">
+      <p class="train">Chuyến tàu ngày vui</p>
+      <h1 class="names"><span class="nw">Ngọc Châm <span class="amp">&amp;</span></span> <span class="nw">Long Giang</span></h1>
+
+      <div class="route">
+        <div class="stop"><p class="k">Ga đi</p><p class="v">Đông Thành</p><p class="who">Nhà trai</p></div>
+        <svg class="track" viewBox="0 0 64 30" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 24 H62" stroke-dasharray="3 4"/><path d="M14 20 V8 Q14 5 17 5 H40 Q48 5 50 12 L52 20 Z" fill="currentColor" fill-opacity=".12"/><path d="M19 10 H27 M31 10 H39"/></g><circle cx="22" cy="22" r="2.4" fill="currentColor"/><circle cx="44" cy="22" r="2.4" fill="currentColor"/></svg>
+        <div class="stop to"><p class="k">Ga đến</p><p class="v">Hoàng Cương</p><p class="who">Nhà gái</p></div>
+      </div>
+
+      <div class="fields">
+        <div class="f full">
+          <p class="k">Trân trọng kính mời</p>
+          <p class="guest" id="guest">Quý khách</p>
+          <p class="after">đến dự bữa cơm thân mật cùng gia đình chúng tôi tại</p>
+        </div>
+        <div class="f full">
+          <p class="k">Nơi đến</p>
+          <p class="v">Tư gia nhà gái</p>
+          <p class="v small">Thôn Đồng Xa 1, Xã Hoàng Cương,<br>Tỉnh Phú Thọ</p>
+        </div>
+        <div class="f row-start"><p class="k">Ngày</p><p class="v">Thứ Bảy 12.12.2026</p><p class="lunar">(Tức ngày 04 tháng 11 năm Bính Ngọ)</p></div>
+        <div class="f"><p class="k">Giờ</p><p class="v">16:00</p><p class="lunar">Vào lúc 16 giờ 00</p></div>
+        <div class="f row-start"><p class="k">Toa</p><p class="v">Hai họ</p></div>
+        <div class="f"><p class="k">Chỗ</p><p class="v">Khách quý</p></div>
+      </div>
+
+      <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="ring" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+        <g fill="none" stroke="currentColor"><circle cx="60" cy="60" r="56" stroke-width="3"/><circle cx="60" cy="60" r="33" stroke-width="1.5"/></g>
+        <text fill="currentColor" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" letter-spacing="2.5"><textPath href="#ring">Đã soát vé ✦ Phú Thọ ✦</textPath></text>
+        <text x="60" y="57" text-anchor="middle" fill="currentColor" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="17">12.12</text>
+        <text x="60" y="74" text-anchor="middle" fill="currentColor" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="13">2026</text>
+      </svg>
+    </div>
+
+    <div class="perf paper" aria-hidden="true"></div>
+
+    <div class="t-stub paper">
+      <div>
+        <p class="stub-k">Cuống vé</p>
+        <p class="announce">Sự hiện diện của quý khách là niềm vinh dự cho gia đình chúng tôi</p>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+      <button type="button" class="check" id="check">Soát vé</button>
+      <span class="hole" aria-hidden="true"></span>
+    </div>
+  </article>
+
+  <section class="card paper" id="map">
+    <h2>Đường đến ngày vui</h2>
+    <p class="sub">Chọn ga để xem đường đi.</p>
+    <div class="tabs" role="tablist" aria-label="Chọn địa điểm">
+      <button type="button" role="tab" id="tab-gai" aria-selected="true" data-place="0">Nhà gái</button>
+      <button type="button" role="tab" id="tab-trai" aria-selected="false" data-place="1">Nhà trai</button>
+    </div>
+    <div class="place" role="tabpanel" aria-live="polite">
+      <h3 id="place-name">Tư gia nhà gái</h3>
+      <p class="addr" id="place-addr">F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam</p>
+      <iframe class="map" id="place-map" title="Bản đồ địa điểm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam&z=16&output=embed"></iframe>
+      <div class="links">
+        <a id="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=F5C3%2B8FR%20Ho%C3%A0ng%20C%C6%B0%C6%A1ng%2C%20Ph%C3%BA%20Th%E1%BB%8D%2C%20Vi%E1%BB%87t%20Nam">Mở Google Maps</a>
+        <a href="#" id="place-copy">Sao chép địa chỉ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="card paper">
+    <h2>Khoảnh khắc</h2>
+    <div class="gallery">
+      <div class="ph wide"><img src="images/web/album-wide.jpg" alt="Ngọc Châm & Long Giang tại studio" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-2.jpg" alt="Chú rể và cô dâu trong studio" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-3.jpg" alt="Tiệc chào mừng ngoài vườn" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-4.jpg" alt="Dạo bước giữa vườn hồng" loading="lazy"></div>
+      <div class="ph"><img src="images/web/album-5.jpg" alt="Khoảnh khắc tinh nghịch" loading="lazy"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="names-small">Ngọc Châm &amp; Long Giang</p>
+    <p class="bye">Rất mong được đón tiếp bạn.</p>
+  </footer>
+</main>
+
+<script>
+  // Tên khách từ link: ?to=Anh%20Minh
+  (function () {
+    var name = "";
+    try { name = new URLSearchParams(location.search).get("to") || ""; } catch (e) {}
+    name = name.trim().slice(0, 60);
+    if (name) document.getElementById("guest").textContent = name;
+  })();
+
+  // Địa chỉ: sửa tên và địa chỉ thật ở đây
+  var PLACES = [
+    { name: "Tư gia nhà gái", addr: "F5C3+8FR Hoàng Cương, Phú Thọ, Việt Nam" },
+    { name: "Tư gia nhà trai", addr: "xã Đông Thành, Tỉnh Phú Thọ", q: "21.4314750,105.1983320" }
+  ];
+  (function () {
+    var tabs = document.querySelectorAll("[data-place]");
+    var copyLink = document.getElementById("place-copy");
+    var current = PLACES[0];
+    function show(i) {
+      current = PLACES[i];
+      var q = encodeURIComponent(current.q || current.addr);
+      document.getElementById("place-name").textContent = current.name;
+      document.getElementById("place-addr").textContent = current.addr;
+      document.getElementById("place-map").src = "https://maps.google.com/maps?q=" + q + "&z=16&output=embed";
+      document.getElementById("place-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.place == i)); });
+      copyLink.textContent = "Sao chép địa chỉ";
+    }
+    tabs.forEach(function (t) { t.addEventListener("click", function () { show(+t.dataset.place); }); });
+    copyLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      var done = function () { copyLink.textContent = "Đã sao chép"; };
+      if (navigator.clipboard) navigator.clipboard.writeText(current.addr).then(done, function () {});
+    });
+  })();
+</script>
+<script>
+  // Soát vé: bấm lỗ trên cuống và đóng dấu lên vé
+  document.getElementById("check").addEventListener("click", function () {
+    document.getElementById("ticket").classList.add("is-checked");
+    this.textContent = "Đã soát vé";
+    this.disabled = true;
+  });
+</script>
+</body>
+</html>
