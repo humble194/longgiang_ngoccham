@@ -46,7 +46,7 @@
     .soft { font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; }
 
     /* ---------- Bìa ---------- */
-    .cover { position: relative; padding: 56px 4px 48px; isolation: isolate; }
+    .cover { position: relative; padding: 56px 4px 48px; isolation: isolate; text-align: center; }
     .topo {
       position: absolute; z-index: -1; top: -40px; right: -120px; width: 420px; height: 420px;
       fill: none; stroke: var(--che-non); opacity: .55; pointer-events: none;
@@ -64,21 +64,21 @@
       font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144;
     }
     .names span { display: block; }
-    .names .amp { font-style: italic; font-weight: 300; font-size: .5em; line-height: 1.4; color: var(--che-non); padding-left: .3em; }
-    .names .second { padding-left: .6em; }
-    .invite { margin-top: 34px; max-width: 30ch; }
+    .names .amp { font-style: italic; font-weight: 300; font-size: .5em; line-height: 1.4; color: var(--che-non); }
+    .invite { margin: 34px auto 0; max-width: 30ch; }
     .invite .lead { color: var(--chu-dim); font-size: 1rem; }
     .guest { font: italic 400 2rem/1.15 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; margin-top: 2px; word-break: break-word; }
     .invite .rest { margin-top: 10px; color: var(--chu-dim); }
 
-    .facts { margin-top: 30px; display: grid; grid-template-columns: auto 1fr; gap: 14px 18px; align-items: baseline; }
+    .facts { margin-top: 30px; display: grid; grid-template-columns: 1fr; gap: 4px; justify-items: center; }
+    .facts dd + dt { margin-top: 14px; }
     .facts dt { font: 500 .8rem/1.4 var(--body); color: var(--chu-dim); }
     .facts dd { margin: 0; }
     .venue { font: 500 1.35rem/1.25 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; color: var(--che-gia); }
     .addr-line { font-size: .88rem; color: var(--chu-dim); }
     .time { font-weight: 500; }
     .lunar { font: italic 400 .95rem/1.4 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; color: var(--chu-dim); }
-    .announce { margin-top: 30px; font: italic 300 1.15rem/1.5 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; color: var(--chu-dim); max-width: 28ch; }
+    .announce { margin-top: 30px; font: italic 300 1.15rem/1.5 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; color: var(--chu-dim); max-width: 28ch; margin-left: auto; margin-right: auto; }
     .nw { white-space: nowrap; }
 
     /* Hàng chè — vách ngăn bằng ba đường đồng mức lượn */
@@ -87,11 +87,11 @@
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='34' fill='none' stroke='%238DB255' stroke-width='1.3'%3E%3Cpath d='M0 8 Q30 0 60 8 T120 8'/%3E%3Cpath d='M0 17 Q30 10 60 17 T120 17' stroke='%233F5B2A' stroke-opacity='.55'/%3E%3Cpath d='M0 26 Q30 20 60 26 T120 26'/%3E%3C/svg%3E") 0 0/120px 34px repeat-x;
     }
 
-    section { padding: 44px 4px; }
+    section { padding: 44px 4px; text-align: center; }
     h2 { font: 400 2.4rem/1.05 var(--display); color: var(--che-gia); margin: 0; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -.01em; text-wrap: balance; }
     .sub { color: var(--chu-dim); margin-top: 6px; }
 
-    .tabs { display: flex; gap: 8px; margin-top: 22px; }
+    .tabs { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
     .tabs button {
       font: 500 .88rem/1 var(--body); padding: 11px 18px; cursor: pointer; border-radius: 999px;
       border: 1px solid var(--che-gia); background: transparent; color: var(--che-gia);
@@ -99,7 +99,7 @@
     .tabs button[aria-selected="true"] { background: var(--che-gia); color: var(--suong); }
     .tabs button[aria-selected="false"]:hover { background: var(--suong-deep); }
     .place { margin-top: 18px; }
-    .place h3 { font: 500 1.35rem/1.3 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; margin: 0; display: flex; align-items: center; gap: 8px; }
+    .place h3 { font: 500 1.35rem/1.3 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .place h3 svg { width: 18px; height: 22px; flex: none; }
     .place .addr { color: var(--chu-dim); }
     /* tờ bản đồ địa hình: khung có vạch chia toạ độ */
@@ -110,7 +110,7 @@
     .sheet::after { bottom: 0; }
     .map { width: 100%; aspect-ratio: 4 / 3; display: block; border: 0; background: var(--suong-deep); filter: saturate(.75) sepia(.12); }
     .sheet-note { display: flex; justify-content: space-between; font: 400 .74rem/1.4 var(--body); color: var(--chu-dim); margin-top: 8px; }
-    .links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 14px; }
     .links a { font-weight: 500; color: var(--dat); text-decoration: underline; text-underline-offset: 4px; }
 
     /* Album: ảnh bo đỉnh như dáng đồi, xếp so le */
@@ -123,7 +123,7 @@
 
     footer { position: relative; text-align: center; padding: 56px 4px 0; isolation: isolate; }
     footer .names-small { font: 400 2.3rem/1.1 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; color: var(--che-gia); }
-    footer .bye { color: var(--chu-dim); margin-top: 8px; }
+    footer .bye { color: var(--chu-dim); margin-top: 10px; font: italic 400 1.3rem/1.4 var(--display); font-variation-settings: "SOFT" 100, "WONK" 0; text-align: center; }
     .hills { display: block; width: calc(100% + 32px); margin: 28px -16px 0; height: auto; }
 
     @media (prefers-reduced-motion: no-preference) {
