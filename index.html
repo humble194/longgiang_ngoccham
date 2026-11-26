@@ -15,7 +15,7 @@
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📷&lt;/text&gt;&lt;/svg&gt;">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&family=Xanh+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&family=Xanh+Mono&family=Yeseva+One&display=swap">
   <style>
     /* MẪU 6 — "Ảnh rửa phim": cuốn album gia đình thập niên 90.
        Bìa nhung xanh rêu, trang giấy bồi, góc dán ảnh, chữ bút bi xanh, nhãn đánh máy, ngày in cam trên ảnh. */
@@ -51,36 +51,75 @@
     :focus-visible { outline: 2px dashed var(--cam); outline-offset: 3px; }
     .nw { white-space: nowrap; }
 
-    /* ---------- Bìa album (lật mở khi vào trang) ---------- */
-    .album-cover {
-      position: fixed; inset: 0; z-index: 20;
-      display: grid; place-items: center;
+    /* ---------- Màn phong bì đỏ (mở khi vào trang) ---------- */
+    .stage {
+      position: fixed; inset: 0; z-index: 40;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+      padding: 24px 16px;
       background-color: var(--nhung-deep);
       background-image: inherit;
-      transform-origin: 0 50%;
-      perspective: 1600px;
+      transition: opacity .8s ease, visibility .8s;
     }
-    .album-cover .label {
-      width: min(78vw, 300px); padding: 28px 20px; text-align: center;
-      border: 2px solid var(--foil); outline: 1px solid rgba(201,168,90,.5); outline-offset: 6px;
-      color: var(--foil);
+    .stage.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .envelope {
+      all: unset; cursor: pointer; position: relative; display: block;
+      width: min(86vw, 360px); aspect-ratio: 3 / 2.3;
+      perspective: 1400px;
+      filter: drop-shadow(0 26px 30px rgba(0,0,0,.45));
+      margin-top: 12vh;
     }
-    .album-cover .label .t1 { font: 600 1.7rem/1.2 var(--hand); }
-    .album-cover .label .t2 { font: 400 1rem/1.4 var(--hand); margin-top: 10px; }
-    .album-cover button {
-      margin-top: 34px; font: 500 1rem/1 var(--hand); color: var(--boi); background: transparent;
-      border: 1px solid rgba(233,226,208,.5); padding: 12px 22px; border-radius: 999px; cursor: pointer;
+    .envelope:focus-visible { outline: 2px dashed var(--foil); outline-offset: 10px; }
+    .env-back { position: absolute; inset: 0; background: #6E0C16; border-radius: 4px; }
+    .card-in {
+      position: absolute; left: 6%; right: 6%; top: 5%; height: 90%; z-index: 1;
+      background: #F7EFE6; border-radius: 2px;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 12%;
+      text-align: center; color: #7E0E18;
+      box-shadow: inset 0 0 0 5px #F7EFE6, inset 0 0 0 6px var(--foil), 0 -2px 8px rgba(0,0,0,.15);
     }
-    .album-cover .inner { display: flex; flex-direction: column; align-items: center; }
-    .album-cover.is-open { animation: flipOpen 1.1s cubic-bezier(.6,.05,.4,1) forwards; pointer-events: none; }
-    @keyframes flipOpen {
-      0% { transform: perspective(1600px) rotateY(0); }
-      70% { opacity: 1; }
-      100% { transform: perspective(1600px) rotateY(-110deg); opacity: 0; visibility: hidden; }
+    .card-in .hy { width: 30px; height: 30px; color: #A3121F; }
+    .card-in .peek { font: 400 1.45rem/1.15 "Yeseva One", Georgia, serif; margin-top: 10px; }
+    .card-in .peek-date { font: 400 .8rem/1 var(--type); letter-spacing: .2em; color: #7A5A52; margin-top: 10px; }
+    .env-front {
+      position: absolute; inset: 0; z-index: 2; border-radius: 0 0 4px 4px;
+      background: linear-gradient(180deg, #B3172A, #A3121F 60%, #94101D);
+      clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
+      display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10%;
     }
-    @media (prefers-reduced-motion: reduce) {
-      .album-cover { display: none; }
+    .env-title { font: 400 1.7rem/1 "Yeseva One", Georgia, serif; color: #F0D6A0; letter-spacing: .04em; }
+    .env-flap {
+      position: absolute; left: 0; right: 0; top: 0; height: 52%; z-index: 3;
+      background: linear-gradient(180deg, #A3121F, #8F1020);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: 50% 0; border-radius: 4px 4px 0 0;
     }
+    .seal {
+      position: absolute; left: 50%; top: 52%; z-index: 4;
+      width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #E6C474, var(--foil) 55%, #9C7A2E);
+      box-shadow: 0 3px 6px rgba(0,0,0,.3), inset 0 0 0 3px rgba(255,240,200,.35);
+      display: grid; place-items: center; color: #7E0E18;
+    }
+    .seal svg { width: 38px; height: 38px; }
+    .stage-hint { font: 400 .95rem/1.4 var(--hand); color: rgba(233,226,208,.75); text-align: center; transition: opacity .4s ease; }
+    .stage.is-opening .stage-hint { opacity: 0; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .seal { transition: opacity .35s ease, transform .45s cubic-bezier(.3,1.4,.5,1); }
+      .envelope:hover .seal { transform: scale(1.06); }
+      .envelope:not(.is-open) .seal { animation: breathe 2.4s ease-in-out infinite; }
+      @keyframes breathe { 50% { box-shadow: 0 3px 6px rgba(0,0,0,.3), inset 0 0 0 3px rgba(255,240,200,.35), 0 0 0 9px rgba(201,168,90,.18); } }
+      .env-flap { transition: transform .75s cubic-bezier(.55,0,.25,1) .2s, z-index 0s .55s; }
+      .card-in { transition: transform 1s cubic-bezier(.22,.8,.25,1) .85s; }
+      .envelope { transition: transform 1s cubic-bezier(.5,0,.2,1) 1.9s, opacity .7s ease 2.2s; }
+      .envelope.is-open .card-in { transform: translateY(-62%); }
+      .envelope.is-open { transform: translateY(-4%) scale(1.04); }
+      main { transition: opacity .9s ease .1s, transform 1s cubic-bezier(.22,.8,.25,1) .1s; }
+      body.is-locked main { opacity: 0; transform: translateY(18px); }
+    }
+    .envelope.is-open .env-flap { transform: rotateX(180deg); z-index: 0; }
+    .envelope.is-open .seal { opacity: 0; transform: scale(1.25); }
+    body.is-locked { overflow: hidden; }
 
     /* ---------- Trang album ---------- */
     .page {
@@ -202,17 +241,48 @@
     footer.page { text-align: center; padding-bottom: 40px; }
     footer .bye { font-size: 1.15rem; color: var(--bic); }
     footer .sign { font: 600 1.6rem/1.2 var(--hand); color: var(--bic); margin-top: 14px; transform: rotate(-2deg); }
+    /* ---------- Nút nhạc nền ---------- */
+    .music-btn {
+      position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px)); z-index: 30;
+      width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; padding: 0;
+      color: var(--foil); background: var(--nhung-deep); border: 1px solid rgba(201,168,90,.6);
+      box-shadow: 0 4px 14px rgba(0,0,0,.3);
+    }
+    .music-btn svg { width: 20px; height: 20px; display: block; }
+    .music-btn .off { display: none; }
+    .music-btn[aria-pressed="false"] .on { display: none; }
+    .music-btn[aria-pressed="false"] .off { display: block; }
+    @media (prefers-reduced-motion: no-preference) {
+      .music-btn[aria-pressed="true"] svg { animation: spin 6s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    }
   </style>
 </head>
-<body>
-<div class="album-cover" id="album-cover">
-  <div class="inner">
-    <div class="label">
-      <p class="t1">Kỷ niệm ngày cưới</p>
-      <p class="t2">Ngọc Châm &amp; Long Giang</p>
-    </div>
-    <button type="button" id="open-album">Mở album</button>
-  </div>
+<body class="is-locked">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Chữ Hỷ 囍 dựng bằng hình học -->
+  <symbol id="hy" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square">
+      <path d="M8 10H92 M17 24H38 M62 24H83 M27.5 10V24 M72.5 10V24 M8 60H92 M22 49V54 M33 49V54 M67 49V54 M78 49V54"/>
+      <rect x="16" y="32" width="23" height="11"/><rect x="61" y="32" width="23" height="11"/>
+      <rect x="16" y="68" width="23" height="21"/><rect x="61" y="68" width="23" height="21"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="stage" id="stage">
+  <button type="button" class="envelope" id="envelope" aria-label="Mở phong bì để xem thiệp mời">
+    <span class="env-back"></span>
+    <span class="card-in">
+      <svg class="hy" aria-hidden="true"><use href="#hy"/></svg>
+      <span class="peek">Ngọc Châm<br>&amp; Long Giang</span>
+      <span class="peek-date">12 · 12 · 2026</span>
+    </span>
+    <span class="env-front"><span class="env-title">Thiệp mời</span></span>
+    <span class="env-flap"></span>
+    <span class="seal"><svg aria-hidden="true"><use href="#hy"/></svg></span>
+  </button>
+  <p class="stage-hint">Chạm vào phong bì để mở thiệp</p>
 </div>
 
 <main>
@@ -286,6 +356,12 @@
   <div class="row"><p class="cap" id="viewer-cap"></p><button type="button" id="viewer-close">Đóng</button></div>
 </dialog>
 
+<audio id="bgm" src="music/nhac-cuoi.mp3" loop preload="auto"></audio>
+<button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Bật/tắt nhạc nền">
+  <svg class="on" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+  <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 17V5h5"/><circle cx="9" cy="17" r="3"/><path d="M3 3l18 18"/></svg>
+</button>
+
 <script>
   // Tên khách từ link: ?to=Anh%20Minh
   (function () {
@@ -322,18 +398,21 @@
     });
   })();
 
-  // Lật bìa album: tự mở sau một nhịp, hoặc bấm "Mở album"
+  // Mở phong bì: con dấu tan, nắp lật lên, thiệp trượt ra, rồi cả màn mờ dần vào trang
   (function () {
-    var cover = document.getElementById("album-cover");
-    var opened = false;
-    function open() {
-      if (opened) return; opened = true;
-      cover.classList.add("is-open");
-      setTimeout(function () { cover.hidden = true; }, 1150);
-    }
-    document.getElementById("open-album").addEventListener("click", open);
-    cover.addEventListener("click", open);
-    setTimeout(open, 1600);
+    var stage = document.getElementById("stage");
+    var env = document.getElementById("envelope");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    env.addEventListener("click", function () {
+      if (env.classList.contains("is-open")) return;
+      env.classList.add("is-open");
+      stage.classList.add("is-opening");
+      setTimeout(function () {
+        stage.classList.add("is-done");
+        document.body.classList.remove("is-locked");
+        setTimeout(function () { stage.hidden = true; }, 850);
+      }, reduce ? 50 : 2400);
+    });
   })();
 
   // Xem ảnh lớn
@@ -350,6 +429,36 @@
     });
     document.getElementById("viewer-close").addEventListener("click", function () { dlg.close(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  })();
+
+  // Nhạc nền: trình duyệt chặn tự phát, nên phát ở lần chạm/bấm đầu tiên; bấm nút để bật/tắt
+  (function () {
+    var audio = document.getElementById("bgm");
+    var btn = document.getElementById("music-btn");
+    var userPaused = false, started = false;
+    audio.volume = 0.6;
+    function sync() { btn.setAttribute("aria-pressed", String(!audio.paused)); }
+    function play() { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
+    audio.addEventListener("play", sync);
+    audio.addEventListener("pause", sync);
+    audio.addEventListener("playing", function () { started = true; });
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (audio.paused) { userPaused = false; play(); } else { userPaused = true; audio.pause(); }
+    });
+    var evs = ["pointerdown", "touchend", "keydown"];
+    function first(e) {
+      if (e.target && e.target.closest && e.target.closest("#music-btn")) return;
+      evs.forEach(function (n) { document.removeEventListener(n, first, true); });
+      if (!userPaused && audio.paused) play();
+    }
+    evs.forEach(function (n) { document.addEventListener(n, first, true); });
+    play(); // thử tự phát (thường bị chặn, không sao)
+    // Tạm dừng khi chuyển tab/khoá màn hình, quay lại thì phát tiếp
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { if (!audio.paused) audio.pause(); }
+      else if (started && !userPaused) play();
+    });
   })();
 </script>
 </body>
