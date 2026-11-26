@@ -144,11 +144,49 @@
       .music-btn[aria-pressed="true"] svg { animation: spin 6s linear infinite; }
       @keyframes spin { to { transform: rotate(360deg); } }
     }
-    /* ---------- Hiện dần khi cuộn ---------- */
+    /* ---------- Hiệu ứng khi cuộn: "sương tan trên đồi chè" ----------
+       .rv-mist  : chữ hiện ra như sương tan — nhoè, mờ, hơi nhỏ rồi rõ dần
+       .rv-rise  : tên, tiêu đề nhô lên từ dưới một đường chân trời
+       .rv-leaf  : dấu "&" nảy ra như mầm lá
+       .rv-pin   : ghim bản đồ rơi xuống, nảy nhẹ
+       .rv-map   : tờ bản đồ mở ra từ trên xuống
+       .rv-rows  : hàng chè được "trồng" từ trái sang phải, rồi lay nhẹ theo gió
+       .rv-ph    : ảnh mọc lên từ chân đồi, ảnh bên trong thu về và rõ nét
+       .rv-hills : ba lớp đồi cuối trang lần lượt nhô lên */
     @media (prefers-reduced-motion: no-preference) {
-      .rv { opacity: 0; translate: 0 28px; transition: opacity .8s cubic-bezier(.22,.8,.25,1) var(--d, 0s), translate .9s cubic-bezier(.22,.8,.25,1) var(--d, 0s); }
-      .rv.in { opacity: 1; translate: none; }
-      .shot.rv { transition: opacity .8s cubic-bezier(.22,.8,.25,1) var(--d, 0s), translate .9s cubic-bezier(.22,.8,.25,1) var(--d, 0s), transform .25s ease; }
+      :root { --ease-out: cubic-bezier(.22,.8,.25,1); --ease-io: cubic-bezier(.65,0,.3,1); }
+      .rv-mist { opacity: 0; filter: blur(10px); scale: .96; translate: 0 10px;
+                 transition: opacity 1.3s var(--ease-out) var(--d, 0s), filter 1.4s var(--ease-out) var(--d, 0s), scale 1.4s var(--ease-out) var(--d, 0s), translate 1.4s var(--ease-out) var(--d, 0s); }
+      .rv-mist.in { opacity: 1; filter: none; scale: 1; translate: none; }
+      .rv-rise > .rv-inner { display: block; clip-path: inset(100% -10% 0 -10%); translate: 0 .45em;
+                 transition: clip-path 1.1s var(--ease-io) var(--d, 0s), translate 1.2s var(--ease-out) var(--d, 0s); }
+      .rv-rise.in > .rv-inner { clip-path: inset(-45% -10% -45% -10%); translate: none; }
+      .rv-leaf { opacity: 0; scale: 0; rotate: -60deg; transform-origin: 50% 70%;
+                 transition: opacity .5s ease var(--d, 0s), scale 1s cubic-bezier(.3,1.5,.5,1) var(--d, 0s), rotate 1s cubic-bezier(.3,1.5,.5,1) var(--d, 0s); }
+      .rv-leaf.in { opacity: 1; scale: 1; rotate: 0deg; }
+      .rv-pin { opacity: 0; translate: 0 -26px;
+                transition: opacity .3s ease var(--d, 0s), translate .8s cubic-bezier(.3,1.6,.5,1) var(--d, 0s); }
+      .rv-pin.in { opacity: 1; translate: none; }
+      .rv-map { scale: 1 .15; opacity: 0; transform-origin: 50% 0;
+                transition: scale 1.3s var(--ease-io) var(--d, 0s), opacity .8s ease var(--d, 0s); }
+      .rv-map.in { scale: 1; opacity: 1; }
+      .rv-rows { position: relative; overflow: hidden; }
+      .rv-rows::after { content: ""; position: absolute; top: 0; bottom: 0; left: -80px; width: calc(100% + 80px);
+                        background: linear-gradient(90deg, transparent, var(--suong) 80px); transition: translate 1.8s var(--ease-io); }
+      .rv-rows.in::after { translate: 100% 0; }
+      .rv-rows.in { animation: breeze 14s linear 1.8s infinite; }
+      @keyframes breeze { to { background-position: 120px 0; } }
+      .rv-ph { background: transparent; }
+      .rv-ph img { clip-path: inset(100% 0 0 0); scale: 1.22; filter: blur(6px) saturate(.6);
+                   transition: clip-path 1.3s var(--ease-io) var(--d, 0s), scale 2s var(--ease-out) var(--d, 0s), filter 1.6s var(--ease-out) var(--d, 0s); }
+      .rv-ph.in img { clip-path: inset(0 0 0 0); scale: 1; filter: none; }
+      .rv-hills path { translate: 0 46px; opacity: 0; transition: translate 1.4s var(--ease-out), opacity 1s ease; }
+      .rv-hills path:nth-child(2) { transition-delay: .18s; }
+      .rv-hills path:nth-child(3) { transition-delay: .36s; }
+      .rv-hills.in path { translate: none; }
+      .rv-hills.in path:nth-child(1) { opacity: .45; }
+      .rv-hills.in path:nth-child(2) { opacity: .8; }
+      .rv-hills.in path:nth-child(3) { opacity: 1; }
     }
   </style>
 </head>
@@ -313,17 +351,37 @@
   })();
 </script>
 <script>
-  // Hiện dần khi cuộn: phần tử trượt nhẹ lên và rõ dần khi vào khung nhìn; các phần tử cùng lúc hiện so le
+  // Hiệu ứng khi cuộn "sương tan trên đồi chè": phần tử vào khung nhìn thì hiện theo kiểu riêng, cùng lúc thì so le
   (function () {
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var els = Array.prototype.slice.call(document.querySelectorAll(".cover .kicker, .cover .names > span, .invite > *, .facts dd, .announce, section h2, .sub, .tabs, .place > *, .ph, footer .names-small, footer .bye"));
-    els.forEach(function (el) { el.classList.add("rv"); });
+    // mỗi nhóm phần tử một kiểu hiện riêng
+    var MAP = [
+      [".cover .kicker, .invite > *, .facts dd, .announce, .sub, .tabs, .place h3, .place .addr, .links, footer .bye", "rv-mist"],
+      [".cover .names > span:not(.amp), section h2, footer .names-small", "rv-rise"],
+      [".cover .names .amp", "rv-leaf"],
+      [".place h3 svg", "rv-pin"],
+      [".sheet", "rv-map"],
+      [".rows", "rv-rows"],
+      [".ph", "rv-ph"],
+      [".hills", "rv-hills"]
+    ];
+    var els = [];
+    MAP.forEach(function (m) {
+      document.querySelectorAll(m[0]).forEach(function (el) {
+        el.classList.add(m[1]); els.push(el);
+        if (m[1] === "rv-rise") { // bọc chữ vào một lớp trong để cắt hiệu ứng, phần tử được theo dõi không bị cắt
+          var w = document.createElement("span"); w.className = "rv-inner";
+          while (el.firstChild) w.appendChild(el.firstChild);
+          el.appendChild(w);
+        }
+      });
+    });
     function start() {
       var io = new IntersectionObserver(function (entries) {
         var i = 0;
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
-          e.target.style.setProperty("--d", (i++ * 0.1) + "s");
+          e.target.style.setProperty("--d", Math.min(i++ * 0.12, 1) + "s");
           e.target.classList.add("in");
           io.unobserve(e.target);
         });
