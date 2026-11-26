@@ -474,7 +474,7 @@
     } else start();
   })();
 
-  // Nhạc nền: trình duyệt chặn tự phát, nên phát ở lần chạm/bấm đầu tiên; bấm nút để bật/tắt
+  // Nhạc nền: phát khi mở thiệp; bấm nút để bật/tắt
   (function () {
     var audio = document.getElementById("bgm");
     var btn = document.getElementById("music-btn");
@@ -489,16 +489,7 @@
       e.stopPropagation();
       if (audio.paused) { userPaused = false; play(); } else { userPaused = true; audio.pause(); }
     });
-    // Điện thoại chỉ cho phát nhạc ở touchend/click, nên giữ lắng nghe đến khi nhạc thực sự chạy
-    var evs = ["pointerdown", "touchend", "click", "keydown"];
-    function stopListening() { evs.forEach(function (n) { document.removeEventListener(n, first, true); }); }
-    audio.addEventListener("playing", stopListening);
-    function first(e) {
-      if (e.target && e.target.closest && e.target.closest("#music-btn")) { stopListening(); return; }
-      if (!userPaused && audio.paused) play();
-    }
-    evs.forEach(function (n) { document.addEventListener(n, first, true); });
-    play(); // thử tự phát (thường bị chặn, không sao)
+    // Nhạc chỉ bắt đầu khi khách bấm mở phong bì (xem phần "Mở phong bì"), không tự phát trước đó
     // Tạm dừng khi chuyển tab/khoá màn hình, quay lại thì phát tiếp
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { if (!audio.paused) audio.pause(); }
