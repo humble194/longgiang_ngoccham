@@ -216,8 +216,36 @@
     .links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 12px; }
     .links a { font-weight: 600; color: var(--do); text-decoration: underline; text-decoration-color: var(--nhu); text-underline-offset: 4px; }
 
-    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
-    .ph { aspect-ratio: 3 / 4; overflow: hidden; background: #EADCC9; }
+    /* Khung ảnh: viền giấy trắng ngà, chỉ nhũ ngoài, góc chặn hồi văn vàng bên trong */
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+    .ph {
+      aspect-ratio: 3 / 4; overflow: hidden; position: relative; background: #EADCC9;
+      border: 6px solid #FFFAF3;
+      box-shadow: 0 0 0 1px rgba(201,162,75,.75), 0 12px 22px -14px rgba(92,10,18,.5);
+    }
+    .ph::after {
+      content: ""; position: absolute; inset: 6px; z-index: 1; pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(240,214,160,.55);
+      --c: #E2C27A;
+      background:
+        linear-gradient(var(--c), var(--c)) 0 0 / 16px 2px no-repeat,
+        linear-gradient(var(--c), var(--c)) 0 0 / 2px 16px no-repeat,
+        linear-gradient(var(--c), var(--c)) 100% 0 / 16px 2px no-repeat,
+        linear-gradient(var(--c), var(--c)) 100% 0 / 2px 16px no-repeat,
+        linear-gradient(var(--c), var(--c)) 0 100% / 16px 2px no-repeat,
+        linear-gradient(var(--c), var(--c)) 0 100% / 2px 16px no-repeat,
+        linear-gradient(var(--c), var(--c)) 100% 100% / 16px 2px no-repeat,
+        linear-gradient(var(--c), var(--c)) 100% 100% / 2px 16px no-repeat;
+      filter: drop-shadow(0 0 1px rgba(92,10,18,.35));
+    }
+    /* con dấu Hỷ nhỏ trên ảnh lớn */
+    .ph .stamp-hy {
+      position: absolute; right: 14px; bottom: 14px; z-index: 2; width: 38px; height: 38px; border-radius: 50%;
+      display: grid; place-items: center; color: var(--do-deep);
+      background: radial-gradient(circle at 35% 30%, #E6C474, var(--nhu) 55%, #9C7A2E);
+      box-shadow: 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,240,200,.4);
+    }
+    .ph .stamp-hy svg { width: 22px; height: 22px; }
     .ph.wide { grid-column: span 2; aspect-ratio: 3 / 2; }
     .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -243,7 +271,8 @@
       .date .side.rv { translate: 0 0; filter: none; letter-spacing: .35em;
                        transition: opacity .8s ease var(--d, 0s), letter-spacing 1.2s var(--ease-out) var(--d, 0s); }
       .date .side.rv.in { letter-spacing: normal; }
-      .ph.rv-ph { background: transparent; }
+      .ph.rv-ph .stamp-hy { opacity: 0; scale: .5; rotate: -20deg; transition: opacity .5s ease calc(var(--d, 0s) + 1s), scale .8s cubic-bezier(.3,1.5,.5,1) calc(var(--d, 0s) + 1s), rotate .8s cubic-bezier(.3,1.5,.5,1) calc(var(--d, 0s) + 1s); }
+      .ph.rv-ph.in .stamp-hy { opacity: 1; scale: 1; rotate: 0deg; }
       .ph.rv-ph img { clip-path: inset(100% 0 0 0); scale: 1.18; transition: clip-path 1.2s var(--ease-io) var(--d, 0s), scale 1.8s var(--ease-out) var(--d, 0s); }
       .ph.rv-ph.in img { clip-path: inset(0 0 0 0); }
       .ph.rv-ph.in img { scale: 1; }
@@ -344,7 +373,7 @@
   <section>
     <h2 data-rv>Khoảnh khắc</h2>
     <div class="gallery">
-      <div class="ph wide" data-rv="ph"><img src="../images/web/album-wide.jpg" alt="Ngọc Châm & Long Giang tại studio" loading="lazy"></div>
+      <div class="ph wide" data-rv="ph"><img src="../images/web/album-wide.jpg" alt="Ngọc Châm & Long Giang tại studio" loading="lazy"><span class="stamp-hy" aria-hidden="true"><svg><use href="#hy"/></svg></span></div>
       <div class="ph" data-rv="ph"><img src="../images/web/album-2.jpg" alt="Chú rể và cô dâu trong studio" loading="lazy"></div>
       <div class="ph" data-rv="ph"><img src="../images/web/album-3.jpg" alt="Tiệc chào mừng ngoài vườn" loading="lazy"></div>
       <div class="ph" data-rv="ph"><img src="../images/web/album-4.jpg" alt="Dạo bước giữa vườn hồng" loading="lazy"></div>
