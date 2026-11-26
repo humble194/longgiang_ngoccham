@@ -144,6 +144,12 @@
       .music-btn[aria-pressed="true"] svg { animation: spin 6s linear infinite; }
       @keyframes spin { to { transform: rotate(360deg); } }
     }
+    /* ---------- Hiện dần khi cuộn ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .rv { opacity: 0; translate: 0 28px; transition: opacity .8s cubic-bezier(.22,.8,.25,1) var(--d, 0s), translate .9s cubic-bezier(.22,.8,.25,1) var(--d, 0s); }
+      .rv.in { opacity: 1; translate: none; }
+      .shot.rv { transition: opacity .8s cubic-bezier(.22,.8,.25,1) var(--d, 0s), translate .9s cubic-bezier(.22,.8,.25,1) var(--d, 0s), transform .25s ease; }
+    }
   </style>
 </head>
 <body>
@@ -289,10 +295,12 @@
       e.stopPropagation();
       if (audio.paused) { userPaused = false; play(); } else { userPaused = true; audio.pause(); }
     });
-    var evs = ["pointerdown", "touchend", "keydown"];
+    // Điện thoại chỉ cho phát nhạc ở touchend/click, nên giữ lắng nghe đến khi nhạc thực sự chạy
+    var evs = ["pointerdown", "touchend", "click", "keydown"];
+    function stopListening() { evs.forEach(function (n) { document.removeEventListener(n, first, true); }); }
+    audio.addEventListener("playing", stopListening);
     function first(e) {
-      if (e.target && e.target.closest && e.target.closest("#music-btn")) return;
-      evs.forEach(function (n) { document.removeEventListener(n, first, true); });
+      if (e.target && e.target.closest && e.target.closest("#music-btn")) { stopListening(); return; }
       if (!userPaused && audio.paused) play();
     }
     evs.forEach(function (n) { document.addEventListener(n, first, true); });
@@ -302,6 +310,35 @@
       if (document.hidden) { if (!audio.paused) audio.pause(); }
       else if (started && !userPaused) play();
     });
+  })();
+</script>
+<script>
+  // Hiện dần khi cuộn: phần tử trượt nhẹ lên và rõ dần khi vào khung nhìn; các phần tử cùng lúc hiện so le
+  (function () {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var els = Array.prototype.slice.call(document.querySelectorAll(".cover .kicker, .cover .names > span, .invite > *, .facts dd, .announce, section h2, .sub, .tabs, .place > *, .ph, footer .names-small, footer .bye"));
+    els.forEach(function (el) { el.classList.add("rv"); });
+    function start() {
+      var io = new IntersectionObserver(function (entries) {
+        var i = 0;
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.style.setProperty("--d", (i++ * 0.1) + "s");
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      els.forEach(function (el) { io.observe(el); });
+    }
+    // Trang có phong bì: chờ mở phong bì xong mới bắt đầu
+    var body = document.body;
+    if (body.classList.contains("is-locked")) {
+      var mo = new MutationObserver(function () {
+        if (body.classList.contains("is-locked")) return;
+        mo.disconnect(); setTimeout(start, 250);
+      });
+      mo.observe(body, { attributes: true, attributeFilter: ["class"] });
+    } else start();
   })();
 </script>
 </body>
